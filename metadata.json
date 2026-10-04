@@ -1,0 +1,6 @@
+{
+  "name": "AI Growth Coach",
+  "description": "Learn. Do. Improve. Turn your business goal into a guided marketing workflow with AI tools and your friendly alpaca guide.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
