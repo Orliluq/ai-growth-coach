@@ -137,6 +137,7 @@ export function ScreenBuild({
       {/* Alpaca Mascot Learning Guide Banner */}
       <AlpacaGuide
         quote={t.alpacaMessage}
+        language={language}
         coachName={t.coachName}
         tip={language === 'pt' 
           ? 'Não busque a frase perfeita agora. O importante é expressar com clareza a dor, o público e o alívio entregue.' 

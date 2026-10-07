@@ -25,6 +25,7 @@ interface ScreenImproveProps {
   t: TranslationSchema['screenImprove'];
   language: Language;
   initialData?: Partial<ImproveFormData>;
+  onChange?: (data: ImproveFormData) => void;
   onRestartLoop: () => void;
   onBack: () => void;
 }
@@ -33,6 +34,7 @@ export function ScreenImprove({
   t,
   language,
   initialData,
+  onChange,
   onRestartLoop,
   onBack,
 }: ScreenImproveProps) {
@@ -46,6 +48,11 @@ export function ScreenImprove({
   const [hasAnalyzed, setHasAnalyzed] = useState(true);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [savedToast, setSavedToast] = useState(false);
+
+  // Persist metrics so a refresh does not discard the recorded results
+  React.useEffect(() => {
+    onChange?.({ impressions, clicks, signups, engagement, conversions, notes });
+  }, [impressions, clicks, signups, engagement, conversions, notes, onChange]);
 
   const handleAnalyze = () => {
     setIsAnalyzing(true);
@@ -89,6 +96,7 @@ export function ScreenImprove({
       {/* Alpaca Mascot Learning Guide Banner */}
       <AlpacaGuide
         quote={t.alpacaMessage}
+        language={language}
         coachName={t.coachName}
         tip={language === 'pt' 
           ? 'Não existem experimentos fracassados, apenas dados que indicam como ajustar o próximo tiro.' 

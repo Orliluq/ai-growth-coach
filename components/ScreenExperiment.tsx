@@ -129,6 +129,7 @@ export function ScreenExperiment({
       {/* Alpaca Mascot Learning Guide Banner */}
       <AlpacaGuide
         quote={t.alpacaMessage}
+        language={language}
         coachName={t.coachName}
         tip={language === 'pt' 
           ? 'Definir uma métrica antes de publicar evita a frustração de não saber se deu certo ou errado.' 

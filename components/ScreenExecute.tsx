@@ -118,6 +118,7 @@ export function ScreenExecute({
       {/* Alpaca Mascot Learning Guide Banner */}
       <AlpacaGuide
         quote={t.alpacaMessage}
+        language={language}
         coachName={t.coachName}
         tip={language === 'pt' 
           ? 'Publique sem medo. A aprendizagem só começa quando a mensagem encontra pessoas reais.' 

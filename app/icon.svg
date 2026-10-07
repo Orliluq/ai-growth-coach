@@ -1,0 +1,156 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 120 120"
+  width="120"
+  height="120"
+>
+  <title>Alpi — AI Growth Coach</title>
+
+  <!-- Warm background -->
+  <circle cx="60" cy="60" r="60" fill="#FAF8F5"/>
+
+  <!-- Soft aura -->
+  <circle cx="60" cy="60" r="48" fill="#FEF3C7" opacity="0.45"/>
+
+  <!-- Left ear -->
+  <path
+    d="M42 43C36 33 35 17 42 11C48 7 52 20 48 37"
+    fill="#FAF6F0"
+    stroke="#E5DFD5"
+    stroke-width="2.5"
+  />
+
+  <path
+    d="M42 36C38 28 38 19 42 15C45 13 47 22 45 33"
+    fill="#FDE8E8"
+  />
+
+  <!-- Right ear -->
+  <path
+    d="M78 43C84 33 85 17 78 11C72 7 68 20 72 37"
+    fill="#FAF6F0"
+    stroke="#E5DFD5"
+    stroke-width="2.5"
+  />
+
+  <path
+    d="M78 36C82 28 82 19 78 15C75 13 73 22 75 33"
+    fill="#FDE8E8"
+  />
+
+  <!-- Head -->
+  <ellipse
+    cx="60"
+    cy="57"
+    rx="35"
+    ry="34"
+    fill="#FAF6F0"
+    stroke="#E5DFD5"
+    stroke-width="2.8"
+  />
+
+  <!-- Fluffy crown -->
+  <path
+    d="M42 36C40 30 44 25 51 27C54 22 61 21 66 25C70 22 77 25 76 31C81 34 78 40 74 42C67 44 52 44 46 41C43 40 42 38 42 36Z"
+    fill="#FFFFFF"
+    stroke="#E5DFD5"
+    stroke-width="2.2"
+  />
+
+  <!-- Glasses -->
+  <g
+    stroke="#3F3F46"
+    stroke-width="2.6"
+    fill="none"
+  >
+    <!-- Bridge -->
+    <path d="M53 58Q60 54 67 58"/>
+
+    <!-- Left frame -->
+    <circle
+      cx="46"
+      cy="58"
+      r="11"
+      fill="#FFFFFF"
+      fill-opacity="0.35"
+    />
+
+    <!-- Right frame -->
+    <circle
+      cx="74"
+      cy="58"
+      r="11"
+      fill="#FFFFFF"
+      fill-opacity="0.35"
+    />
+
+    <!-- Arms -->
+    <path
+      d="M35 57L30 54"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M85 57L90 54"
+      stroke-linecap="round"
+    />
+  </g>
+
+  <!-- Eyes -->
+  <circle cx="46" cy="58" r="3.6" fill="#18181B"/>
+  <circle cx="74" cy="58" r="3.6" fill="#18181B"/>
+
+  <!-- Eye highlights -->
+  <circle cx="45" cy="56.5" r="1.2" fill="#FFFFFF"/>
+  <circle cx="73" cy="56.5" r="1.2" fill="#FFFFFF"/>
+
+  <!-- Blush -->
+  <ellipse
+    cx="37"
+    cy="68"
+    rx="5"
+    ry="2.8"
+    fill="#FECDD3"
+    opacity="0.8"
+  />
+
+  <ellipse
+    cx="83"
+    cy="68"
+    rx="5"
+    ry="2.8"
+    fill="#FECDD3"
+    opacity="0.8"
+  />
+
+  <!-- Snout -->
+  <path
+    d="M52 67C52 62 68 62 68 67C68 73 52 73 52 67Z"
+    fill="#FFFFFF"
+  />
+
+  <!-- Nose -->
+  <ellipse
+    cx="60"
+    cy="67"
+    rx="2.8"
+    ry="2"
+    fill="#71717A"
+  />
+
+  <!-- Smile -->
+  <path
+    d="M60 69V72M56.5 72Q60 75.5 63.5 72"
+    stroke="#71717A"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <!-- Intelligence spark -->
+  <path
+    d="M95 28L97 22M101 32L107 30M94 38L99 41"
+    stroke="#F59E0B"
+    stroke-width="2.2"
+    stroke-linecap="round"
+  />
+</svg>

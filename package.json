@@ -1,7 +1,11 @@
 {
-  "name": "ai-studio-applet",
+  "name": "ai-growth-coach",
   "version": "0.1.0",
   "private": true,
+  "description": "AI Growth Coach es una solución AI-first construida mediante desarrollo asistido por IA y herramientas no-code/low-code.",
+  "author": "Orli Dun",
+  "license": "MIT",
+  "homepage": "https://github.com/Orliluq/ai-growth-coach#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

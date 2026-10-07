@@ -106,6 +106,7 @@ export function ScreenLearn({
       {/* Alpaca Mascot Learning Guide Banner */}
       <AlpacaGuide
         quote={t.alpacaMessage}
+        language={language}
         coachName={t.coachName}
         tip={language === 'pt' 
           ? 'Nossa meta é que você saiba exatamente o que colocar na sua mensagem antes de gerar os copys com IA.' 

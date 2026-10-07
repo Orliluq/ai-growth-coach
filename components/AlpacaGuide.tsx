@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Lightbulb, Sparkles, BookOpen } from 'lucide-react';
+import { Language } from '@/types/growth';
 
 interface AlpacaGuideProps {
   quote: string;
@@ -10,7 +11,25 @@ interface AlpacaGuideProps {
   whyBody?: string;
   coachName?: string;
   compact?: boolean;
+  language?: Language;
 }
+
+const GUIDE_COPY = {
+  es: {
+    guideLabel: 'Guía de aprendizaje paso a paso',
+    quoteTabHint: 'Consejo del paso actual',
+    whyTabHint: 'Fundamento didáctico',
+    quoteTab: 'Mensaje',
+    whyTab: '¿Por qué?',
+  },
+  pt: {
+    guideLabel: 'Guia de aprendizado passo a passo',
+    quoteTabHint: 'Dica do passo atual',
+    whyTabHint: 'Fundamento didático',
+    quoteTab: 'Mensagem',
+    whyTab: 'Por quê?',
+  },
+} as const;
 
 export function AlpacaAvatar({ className = "w-16 h-16", mood = "friendly" }: { className?: string; mood?: 'friendly' | 'thinking' | 'cheering' }) {
   return (
@@ -24,7 +43,7 @@ export function AlpacaAvatar({ className = "w-16 h-16", mood = "friendly" }: { c
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full relative z-10 drop-shadow-sm select-none"
-        aria-label="Alfi the Alpaca Mascot"
+        aria-label="Alpi the Alpaca Mascot"
       >
         {/* Soft Shadow Base */}
         <ellipse cx="60" cy="122" rx="42" ry="7" fill="#E7E2DA" opacity="0.6" />
@@ -144,10 +163,12 @@ export function AlpacaGuide({
   tip,
   whyTitle,
   whyBody,
-  coachName = 'Alfi · Tu Coach de Crecimiento',
+  coachName = 'Alpi · Tu Coach de Crecimiento',
   compact = false,
+  language = 'es',
 }: AlpacaGuideProps) {
   const [activeTab, setActiveTab] = useState<'quote' | 'why'>('quote');
+  const copy = GUIDE_COPY[language];
 
   if (compact) {
     return (
@@ -175,7 +196,7 @@ export function AlpacaGuide({
               <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider block">
                 {coachName}
               </span>
-              <p className="text-xs text-stone-600 font-medium">Guía de aprendizaje paso a paso</p>
+              <p className="text-xs text-stone-600 font-medium">{copy.guideLabel}</p>
             </div>
           </div>
 
@@ -188,7 +209,7 @@ export function AlpacaGuide({
                 </span>
                 <span className="text-xs text-stone-400">·</span>
                 <span className="text-xs text-stone-500">
-                  {activeTab === 'quote' ? 'Consejo del paso actual' : 'Fundamento didáctico'}
+                  {activeTab === 'quote' ? copy.quoteTabHint : copy.whyTabHint}
                 </span>
               </div>
 
@@ -203,7 +224,7 @@ export function AlpacaGuide({
                         : 'text-stone-500 hover:text-stone-800'
                     }`}
                   >
-                    Mensaje
+                    {copy.quoteTab}
                   </button>
                   <button
                     type="button"
@@ -214,7 +235,7 @@ export function AlpacaGuide({
                         : 'text-stone-500 hover:text-stone-800'
                     }`}
                   >
-                    ¿Por qué?
+                    {copy.whyTab}
                   </button>
                 </div>
               )}

@@ -60,6 +60,19 @@ export function ScreenDiagnose({
     initialData?.marketingExperience || defineData.experience || 'beginner'
   );
 
+  // Re-sync when persisted data arrives from the parent after mount.
+  // Render-phase adjustment avoids a cascading render.
+  const [syncedData, setSyncedData] = useState(initialData);
+  if (initialData !== syncedData) {
+    setSyncedData(initialData);
+    setAudience(initialData?.audience || '');
+    setCurrentAssets(initialData?.currentAssets || []);
+    setOtherAsset(initialData?.otherAsset || '');
+    setMainChallenge(initialData?.mainChallenge || null);
+    setOtherChallenge(initialData?.otherChallenge || '');
+    setMarketingExperience(initialData?.marketingExperience || defineData.experience || 'beginner');
+  }
+
   // Asset list configurations with icons for visual clarity
   const assetOptions: Array<{ 
     id: CurrentAssetId; 
@@ -193,6 +206,7 @@ export function ScreenDiagnose({
       {/* Alpaca Coach Strategic Guidance Banner */}
       <AlpacaGuide
         quote={t.alpacaMessage}
+        language={language}
         coachName={t.coachName}
         tip={language === 'pt' 
           ? 'Não se preocupe em acertar jargões técnicos. Seja sincero com a sua realidade atual.' 

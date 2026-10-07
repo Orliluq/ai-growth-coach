@@ -99,6 +99,7 @@ export default function HomePage() {
   const [currentStep, setCurrentStep] = useState<StepNumber>(1);
   const [maxUnlockedStep, setMaxUnlockedStep] = useState<number>(1);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+  const [isHydrated, setIsHydrated] = useState<boolean>(false);
 
   const showToast = (message: string, type: ToastType = 'error') => {
     const id = Math.random().toString(36).substring(2, 9);
@@ -199,6 +200,9 @@ export default function HomePage() {
         const savedExec = localStorage.getItem('growth_coach_execute');
         if (savedExec) setExecuteChecklist(JSON.parse(savedExec));
 
+        const savedImprove = localStorage.getItem('growth_coach_improve');
+        if (savedImprove) setImproveData(JSON.parse(savedImprove));
+
         // Calculate maximum unlocked step
         if (savedExec) {
           setMaxUnlockedStep(7);
@@ -213,11 +217,18 @@ export default function HomePage() {
         }
       } catch {
         // Storage access error or invalid JSON
+      } finally {
+        setIsHydrated(true);
       }
     }, 0);
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Keep the document language in sync for screen readers / hyphenation
+  React.useEffect(() => {
+    document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'es';
+  }, [language]);
 
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
@@ -284,6 +295,13 @@ export default function HomePage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleImproveChange = (data: ImproveFormData) => {
+    setImproveData(data);
+    try {
+      localStorage.setItem('growth_coach_improve', JSON.stringify(data));
+    } catch {}
+  };
+
   const handleRestartLoop = () => {
     // Loop back to Step 04 (or Step 05) with learnings incorporated!
     setCurrentStep(4);
@@ -340,7 +358,7 @@ export default function HomePage() {
         </section>
 
         {/* Quick demo banner if on step 1 without input */}
-        {currentStep === 1 && !formData.goalCategory && !formData.targetDescription && (
+        {isHydrated && currentStep === 1 && !formData.goalCategory && !formData.targetDescription && (
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 sm:px-4 bg-amber-50/80 border border-amber-200/60 rounded-xl text-xs text-amber-950">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-600 shrink-0" />
@@ -373,6 +391,7 @@ export default function HomePage() {
             >
               <ScreenDefine
                 t={t.screenDefine}
+                language={language}
                 initialData={formData}
                 onSubmit={handleDefineSubmit}
                 onError={(msg) => showToast(msg, 'error')}
@@ -500,6 +519,7 @@ export default function HomePage() {
                 t={t.screenImprove}
                 language={language}
                 initialData={improveData}
+                onChange={handleImproveChange}
                 onRestartLoop={handleRestartLoop}
                 onBack={() => handleSelectStep(6)}
               />
@@ -541,8 +561,8 @@ export default function HomePage() {
           <div className="flex items-center gap-3">
             <span>
               {language === 'pt' 
-                ? 'Protótipo Educacional de Marketing com IA' 
-                : 'Prototipo Educativo de Marketing con IA'}
+                ? 'Protótipo Educacional de Marketing com IA por Orli Dun' 
+                : 'Prototipo Educativo de Marketing con IA por Orli Dun'}
             </span>
             <span>·</span>
             <span>2026</span>
@@ -551,7 +571,11 @@ export default function HomePage() {
       </footer>
 
       {/* Simple Toast Notification Component */}
-      <ToastContainer toasts={toasts} onDismiss={dismissToast} />
+      <ToastContainer
+        toasts={toasts}
+        onDismiss={dismissToast}
+        closeLabel={language === 'pt' ? 'Fechar notificação' : 'Cerrar notificación'}
+      />
 
     </div>
   );

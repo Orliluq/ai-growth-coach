@@ -15,14 +15,15 @@ export interface ToastMessage {
 interface ToastContainerProps {
   toasts: ToastMessage[];
   onDismiss: (id: string) => void;
+  closeLabel?: string;
 }
 
-export function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
+export function ToastContainer({ toasts, onDismiss, closeLabel = 'Cerrar notificación' }: ToastContainerProps) {
   return (
     <div 
       aria-live="polite" 
       aria-atomic="true"
-      className="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0"
+      className="fixed bottom-4 left-4 right-4 sm:bottom-5 sm:left-auto sm:right-5 sm:w-full sm:max-w-sm z-50 flex flex-col gap-2.5 pointer-events-none"
     >
       <AnimatePresence>
         {toasts.map((toast) => {
@@ -57,7 +58,7 @@ export function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
               <button
                 type="button"
                 onClick={() => onDismiss(toast.id)}
-                aria-label="Cerrar notificación"
+                aria-label={closeLabel}
                 className="text-stone-400 hover:text-stone-700 transition-colors p-0.5 -mr-1 -mt-1 cursor-pointer shrink-0"
               >
                 <X className="w-4 h-4" />

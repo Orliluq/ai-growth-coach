@@ -5,7 +5,8 @@ import {
   GoalCategoryId, 
   TimelineOption, 
   ExperienceLevel, 
-  GrowthFormData 
+  GrowthFormData,
+  Language
 } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaGuide } from './AlpacaGuide';
@@ -30,17 +31,31 @@ import {
 
 interface ScreenDefineProps {
   t: TranslationSchema['screenDefine'];
+  language: Language;
   initialData: GrowthFormData;
   onSubmit: (data: GrowthFormData) => void;
   onError?: (message: string) => void;
 }
 
-export function ScreenDefine({ t, initialData, onSubmit, onError }: ScreenDefineProps) {
+export function ScreenDefine({ t, language, initialData, onSubmit, onError }: ScreenDefineProps) {
   const [goalCategory, setGoalCategory] = useState<GoalCategoryId | null>(initialData.goalCategory);
   const [targetDescription, setTargetDescription] = useState<string>(initialData.targetDescription);
   const [timeline, setTimeline] = useState<TimelineOption | null>(initialData.timeline || '30d');
   const [experience, setExperience] = useState<ExperienceLevel | null>(initialData.experience || 'beginner');
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
+
+  // Keep the form in sync when the parent injects data after mount
+  // (localStorage restore on reload, or the "load guided example" shortcut).
+  // Uses React's render-phase adjustment pattern to avoid a cascading render.
+  const [syncedData, setSyncedData] = useState(initialData);
+  if (initialData !== syncedData) {
+    setSyncedData(initialData);
+    setGoalCategory(initialData.goalCategory);
+    setTargetDescription(initialData.targetDescription);
+    setTimeline(initialData.timeline || '30d');
+    setExperience(initialData.experience || 'beginner');
+    setHasSubmitted(false);
+  }
 
   const goalCards: Array<{
     id: GoalCategoryId;
@@ -122,6 +137,7 @@ export function ScreenDefine({ t, initialData, onSubmit, onError }: ScreenDefine
         tip={t.alpacaGuidance.tip}
         whyTitle={t.alpacaGuidance.whyImportantTitle}
         whyBody={t.alpacaGuidance.whyImportantBody}
+        language={language}
         coachName={t.alpacaGuidance.coachName}
       />
 
@@ -142,7 +158,7 @@ export function ScreenDefine({ t, initialData, onSubmit, onError }: ScreenDefine
         {isCategoryMissing && (
           <div className="flex items-center gap-2 p-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm rounded-xl">
             <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
-            <span>Por favor selecciona qué tipo de proyecto quieres hacer crecer.</span>
+            <span>{language === 'pt' ? 'Selecione que tipo de projeto você quer fazer crescer.' : 'Selecciona qué tipo de proyecto quieres hacer crecer.'}</span>
           </div>
         )}
 
@@ -182,7 +198,11 @@ export function ScreenDefine({ t, initialData, onSubmit, onError }: ScreenDefine
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-stone-100 flex items-center text-xs font-semibold text-stone-400 group-hover:text-stone-700 transition-colors">
-                  <span>{isSelected ? 'Seleccionado' : 'Elegir esta opción'}</span>
+                  <span>
+                    {isSelected
+                      ? (language === 'pt' ? 'Selecionado' : 'Seleccionado')
+                      : (language === 'pt' ? 'Escolher esta opção' : 'Elegir esta opción')}
+                  </span>
                 </div>
               </button>
             );
@@ -208,7 +228,7 @@ export function ScreenDefine({ t, initialData, onSubmit, onError }: ScreenDefine
           {isDescriptionMissing && (
             <div className="flex items-center gap-2 p-3 mb-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm rounded-xl">
               <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
-              <span>Escribe tu objetivo principal para que la IA arme tu flujo de trabajo.</span>
+              <span>{language === 'pt' ? 'Escreva seu objetivo principal para que a IA monte seu fluxo de trabalho.' : 'Escribe tu objetivo principal para que la IA arme tu flujo de trabajo.'}</span>
             </div>
           )}
 

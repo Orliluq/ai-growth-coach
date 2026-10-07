@@ -413,7 +413,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
         },
       },
       alpacaGuidance: {
-        coachName: 'Alfi · Tu Coach Alpaca',
+        coachName: 'Alpi · Tu Coach Alpaca',
         quote: 'No te preocupes. No necesitas saber la respuesta a todo. Lo resolveremos juntos paso a paso.',
         tip: 'La mayoría de los proyectos exitosos comenzaron con una meta simple. El secreto es dividirla en acciones diarias guiadas por IA.',
         whyImportantTitle: '¿Por qué empezamos por aquí?',
@@ -428,7 +428,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Ahora entendamos dónde estás.',
       supportingText: 'No necesitas tener todas las respuestas. Te haré unas pocas preguntas para encontrar el mejor punto de partida.',
       alpacaMessage: 'Vamos paso a paso. No necesitas saber Marketing para empezar.',
-      coachName: 'Alfi · Tu Coach de Crecimiento',
+      coachName: 'Alpi · Tu Coach de Crecimiento',
       q1: {
         title: '¿A quién quieres llegar?',
         helper: 'Describe a la persona, grupo o tipo de cliente que quieres atraer.',
@@ -500,7 +500,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
     screenTransitionLearn: {
       badge: 'Paso 03 · Transición a Aprender',
       title: '¡Diagnóstico listo! Tu punto de partida está definido',
-      subtitle: 'Tu coach Alfi ha estructurado tus respuestas para preparar tus lecciones personalizadas con IA.',
+      subtitle: 'Tu coach Alpi ha estructurado tus respuestas para preparar tus lecciones personalizadas con IA.',
       previewCardTitle: 'Estructura conceptual lista para tu IA (Context Schema)',
       nextTitle: 'Qué desbloquearás en el Paso 03: Aprender',
       nextSteps: [
@@ -516,7 +516,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Aprende lo que necesitas para avanzar.',
       supportingText: 'No necesitas convertirte en experto en Marketing. Vamos a aprender justo lo necesario para tomar tu próxima decisión.',
       alpacaMessage: 'Te prometo que hoy no vamos a leer un manual de 400 páginas.',
-      coachName: 'Alfi · Tu Coach de Crecimiento',
+      coachName: 'Alpi · Tu Coach de Crecimiento',
       startingPoint: {
         title: 'Tu punto de partida',
         projectType: 'Tipo de proyecto',
@@ -578,7 +578,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Ahora vamos a construirlo juntos.',
       supportingText: 'Tu idea no necesita estar perfecta. La vamos a convertir en una primera versión que puedas probar.',
       alpacaMessage: 'Yo te ayudo a ordenar las ideas. La decisión final sigue siendo tuya.',
-      coachName: 'Alfi · Tu Coach de Crecimiento',
+      coachName: 'Alpi · Tu Coach de Crecimiento',
       mainTitle: 'Construyamos tu propuesta de valor',
       step1: {
         title: '¿Qué problema quieres resolver?',
@@ -625,7 +625,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Convirtamos la idea en una hipótesis.',
       supportingText: 'No vamos a adivinar. Vamos a probar algo concreto y medir qué sucede.',
       alpacaMessage: '¡Ahora sí! Tenemos algo que aprender del mundo real.',
-      coachName: 'Alfi · Tu Coach de Crecimiento',
+      coachName: 'Alpi · Tu Coach de Crecimiento',
       cardTitle: 'Ficha del Experimento',
       fields: {
         objective: {
@@ -694,7 +694,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Llévalo al mundo real.',
       supportingText: 'Ya tienes la estrategia. Ahora conviértela en una pieza que puedas publicar, compartir o probar.',
       alpacaMessage: 'Menos perfección. Más pruebas.',
-      coachName: 'Alfi · Tu Coach de Crecimiento',
+      coachName: 'Alpi · Tu Coach de Crecimiento',
       flowTitle: 'Flujo de materialización',
       flowSteps: ['OBJETIVO', 'MENSAJE', 'FORMATO', 'CONTENIDO', 'PUBLICACIÓN'],
       assetPreview: {
@@ -733,7 +733,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: '¿Qué aprendimos?',
       supportingText: 'El resultado no es solo un número. Es información para decidir qué hacer después.',
       alpacaMessage: 'Eso es crecimiento: probar, aprender y volver a intentar.',
-      coachName: 'Alfi · Tu Coach de Crecimiento',
+      coachName: 'Alpi · Tu Coach de Crecimiento',
       form: {
         title: 'Resultados del experimento',
         realDataNote: 'Incluye datos reales. No inventes métricas.',
@@ -900,7 +900,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
         },
       },
       alpacaGuidance: {
-        coachName: 'Alfi · Seu Coach Alpaca',
+        coachName: 'Alpi · Seu Coach Alpaca',
         quote: 'Não se preocupe. Você não precisa saber a resposta para tudo. Vamos descobrir isso juntos passo a passo.',
         tip: 'A maioria dos negócios prósperos começou com um objetivo simples. O segredo é quebrá-lo em tarefas práticas guiadas por IA.',
         whyImportantTitle: 'Por que começamos por aqui?',
@@ -915,7 +915,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Agora vamos entender onde você está.',
       supportingText: 'Você não precisa ter todas as respostas. Vou fazer algumas perguntas para encontrar o melhor ponto de partida.',
       alpacaMessage: 'Vamos passo a passo. Você não precisa dominar Marketing para começar.',
-      coachName: 'Alfi · Seu Coach de Crescimento',
+      coachName: 'Alpi · Seu Coach de Crescimento',
       q1: {
         title: 'Quem você quer alcançar?',
         helper: 'Descreva a pessoa, grupo ou tipo de cliente que você quer atrair.',
@@ -987,7 +987,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
     screenTransitionLearn: {
       badge: 'Passo 03 · Transição para Aprender',
       title: 'Diagnóstico pronto! Seu ponto de partida foi definido',
-      subtitle: 'Seu coach Alfi estruturou suas respostas para preparar suas lições personalizadas com IA.',
+      subtitle: 'Seu coach Alpi estruturou suas respostas para preparar suas lições personalizadas com IA.',
       previewCardTitle: 'Estrutura conceitual pronta para sua IA (Context Schema)',
       nextTitle: 'O que você desbloqueará no Passo 03: Aprender',
       nextSteps: [
@@ -1003,7 +1003,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Aprenda o que você precisa para avançar.',
       supportingText: 'Você não precisa se tornar especialista em Marketing. Vamos aprender exatamente o que você precisa para tomar sua próxima decisão.',
       alpacaMessage: 'Prometo que hoje não vamos ler um manual de 400 páginas.',
-      coachName: 'Alfi · Seu Coach de Crescimento',
+      coachName: 'Alpi · Seu Coach de Crescimento',
       startingPoint: {
         title: 'Seu ponto de partida',
         projectType: 'Tipo de projeto',
@@ -1065,7 +1065,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Agora vamos construir isso juntos.',
       supportingText: 'Sua ideia não precisa estar perfeita. Vamos transformá-la em uma primeira versão que você possa testar.',
       alpacaMessage: 'Eu ajudo você a organizar as ideias. A decisão final continua sendo sua.',
-      coachName: 'Alfi · Seu Coach de Crescimento',
+      coachName: 'Alpi · Seu Coach de Crescimento',
       mainTitle: 'Vamos construir sua proposta de valor',
       step1: {
         title: 'Que problema você quer resolver?',
@@ -1112,7 +1112,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Vamos transformar a ideia em uma hipótese.',
       supportingText: 'Não vamos adivinhar. Vamos testar algo concreto e medir o que acontece.',
       alpacaMessage: 'Agora sim! Temos algo para aprender com o mundo real.',
-      coachName: 'Alfi · Seu Coach de Crescimento',
+      coachName: 'Alpi · Seu Coach de Crescimento',
       cardTitle: 'Ficha do Experimento',
       fields: {
         objective: {
@@ -1181,7 +1181,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Leve isso para o mundo real.',
       supportingText: 'Você já tem a estratégia. Agora transforme-a em algo que possa publicar, compartilhar ou testar.',
       alpacaMessage: 'Menos perfeição. Mais testes.',
-      coachName: 'Alfi · Seu Coach de Crescimento',
+      coachName: 'Alpi · Seu Coach de Crescimento',
       flowTitle: 'Fluxo de materialização',
       flowSteps: ['OBJETIVO', 'MENSAGEM', 'FORMATO', 'CONTEÚDO', 'PUBLICAÇÃO'],
       assetPreview: {
@@ -1220,7 +1220,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'O que aprendemos?',
       supportingText: 'O resultado não é apenas um número. É informação para decidir o que fazer depois.',
       alpacaMessage: 'Isso é crescimento: testar, aprender e tentar de novo.',
-      coachName: 'Alfi · Seu Coach de Crescimento',
+      coachName: 'Alpi · Seu Coach de Crescimento',
       form: {
         title: 'Resultados do experimento',
         realDataNote: 'Inclua dados reais. Não invente métricas.',

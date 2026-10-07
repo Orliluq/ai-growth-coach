@@ -101,22 +101,22 @@ export function ProgressSteps({
 
       {/* Mobile Compact View */}
       <div className="md:hidden bg-white border border-stone-200/90 rounded-2xl p-4 shadow-2xs">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            <span className="font-mono-data text-xs font-semibold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-md">
+        <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 mb-3">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="font-mono-data text-xs font-semibold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-md shrink-0">
               {steps[currentStep - 1]?.num || '01'} / 07
             </span>
-            <span className="text-xs font-bold text-stone-900">
+            <span className="text-xs font-bold text-stone-900 truncate">
               {steps[currentStep - 1]?.label}
             </span>
           </div>
-          <span className="text-xs text-stone-500">
+          <span className="text-xs text-stone-500 truncate">
             {steps[currentStep - 1]?.shortDesc}
           </span>
         </div>
 
         {/* 7 mini indicator dots with progress bar */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 -mx-2 px-2">
           {steps.map((step) => {
             const isCurrent = step.id === currentStep;
             const isCompleted = step.id < currentStep;
@@ -128,15 +128,22 @@ export function ProgressSteps({
                 type="button"
                 onClick={() => isUnlocked && onSelectStep && onSelectStep(step.id as StepNumber)}
                 disabled={!isUnlocked}
-                aria-label={`Paso ${step.num}: ${step.label}`}
-                className={`h-2 flex-1 rounded-full transition-all cursor-pointer ${
-                  isCurrent
-                    ? 'bg-amber-500 ring-2 ring-amber-200'
-                    : isCompleted
-                    ? 'bg-emerald-500'
-                    : 'bg-stone-200'
-                }`}
-              />
+                aria-label={`${step.num} · ${step.label} — ${step.shortDesc}`}
+                aria-current={isCurrent ? 'step' : undefined}
+                className="group flex-1 py-3 -my-3 flex items-center cursor-pointer disabled:cursor-not-allowed"
+              >
+                <span
+                  className={`h-2 w-full rounded-full transition-all pointer-events-none ${
+                    isCurrent
+                      ? 'bg-amber-500 ring-2 ring-amber-200'
+                      : isCompleted
+                      ? 'bg-emerald-500'
+                      : isUnlocked
+                      ? 'bg-stone-300 group-hover:bg-stone-400'
+                      : 'bg-stone-200'
+                  }`}
+                />
+              </button>
             );
           })}
         </div>
