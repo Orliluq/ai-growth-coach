@@ -23,7 +23,5 @@ export const TOOL_LINKS = {
     process.env.NEXT_PUBLIC_CANVA_URL ??
     "NEXT_PUBLIC_CANVA_URL",
 
-  practicalGuide:
-    process.env.NEXT_PUBLIC_PRACTICAL_GUIDE_URL ??
-    "NEXT_PUBLIC_PRACTICAL_GUIDE_URL",
+  practicalGuide: "/guia-practica",
 } as const;

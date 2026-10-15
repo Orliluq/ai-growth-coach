@@ -22,6 +22,7 @@ import {
   Eye
 } from 'lucide-react';
 import { TOOL_LINKS } from '@/lib/tool-links';
+import Link from 'next/link';
 
 interface ScreenBuildProps {
   t: TranslationSchema['screenBuild'];
@@ -527,20 +528,19 @@ export function ScreenBuild({
               </span>
             </button>
 
-            <button
-              type="button"
-              onClick={() => {
-                window.location.href = TOOL_LINKS.practicalGuide;
-              }}
-              className="w-full sm:w-auto px-5 py-3 rounded-xl border border-stone-300 hover:bg-stone-50 text-stone-700 font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            
+            <Link
+              href={TOOL_LINKS.practicalGuide}
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50 sm:w-auto"
             >
-              <Eye className="w-4 h-4" />
+              <Eye className="h-4 w-4 shrink-0" />
               <span>
-                {language === 'pt'
-                  ? 'Ver guía en pantalla ↗'
-                  : 'Ver guía en pantalla ↗'}
+              {language === 'pt'
+                ? 'Ver guia na tela ↗'
+                : 'Ver guía en pantalla ↗'}
               </span>
-            </button>
+            </Link>
+
           </div>
 
           <div className="mt-3 p-3 rounded-xl bg-white/70 border border-stone-200/70">
