@@ -4,20 +4,24 @@ import React, { useState } from 'react';
 import { BuildFormData, Language } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaAvatar, AlpacaGuide } from './AlpacaGuide';
-import { 
-  Hammer, 
-  ArrowRight, 
-  ArrowLeft, 
-  Sparkles, 
-  Check, 
-  RefreshCw, 
-  Edit3, 
-  Target, 
-  Users, 
-  HeartHandshake, 
+import {
+  Hammer,
+  ArrowRight,
+  ArrowLeft,
+  Sparkles,
+  Check,
+  RefreshCw,
+  Edit3,
+  Target,
+  // Users,
+  // HeartHandshake,
   CheckCircle2,
-  Lock
+  Lock,
+  Brain,
+  Palette,
+  Eye
 } from 'lucide-react';
+import { TOOL_LINKS } from '@/lib/tool-links';
 
 interface ScreenBuildProps {
   t: TranslationSchema['screenBuild'];
@@ -76,8 +80,8 @@ export function ScreenBuild({
   };
 
   // Auto-compose a draft proposition if user is typing custom parts and hasn't locked one
-  const computedDraftProp = valueProposition.trim() 
-    ? valueProposition 
+  const computedDraftProp = valueProposition.trim()
+    ? valueProposition
     : (persona.trim() && problem.trim() && value.trim())
     ? (language === 'pt'
         ? `Para ${persona.trim()} que enfrentam ${problem.trim()}, oferecemos uma solução que permite ${value.trim()}.`
@@ -85,6 +89,86 @@ export function ScreenBuild({
     : '';
 
   const isComplete = (problem.trim().length > 0 && persona.trim().length > 0 && value.trim().length > 0) || valueProposition.trim().length > 0;
+
+  const buildCoachContext = () => {
+    const isPt = language === 'pt';
+
+    if (isPt) {
+      return `AI GROWTH COACH — CONTEXTO
+
+              Idioma: Português do Brasil
+
+              Sua proposta de valor:
+              ${valueProposition || computedDraftProp || 'Em construção'}
+
+              Problema:
+              ${problem || 'A definir'}
+
+              Público-alvo:
+              ${persona || 'A definir'}
+
+              Preciso que você me ajude a:
+              - Refinar esta proposta de valor
+              - Identificar oportunidades de melhoria
+              - Sugerir métricas para validar
+
+              Não invente dados.
+              Diferencie fatos, hipóteses, inferências e recomendações.
+              A decisão final pertence à pessoa.`;
+            }
+
+    return `AI GROWTH COACH — CONTEXTO
+
+            Idioma: Español
+
+            Tu propuesta de valor:
+            ${valueProposition || computedDraftProp || 'En construcción'}
+
+            Problema:
+            ${problem || 'A definir'}
+
+            Público objetivo:
+            ${persona || 'A definir'}
+
+            Necesito que me ayudes a:
+            - Refinar esta propuesta de valor
+            - Identificar oportunidades de mejora
+            - Sugerir métricas para validar
+
+            No inventes datos.
+            Diferencia hechos, hipótesis, inferencias y recomendaciones.
+            La decisión final corresponde a la persona.`;
+        };
+
+  const handleOpenGrowthCoach = async () => {
+    const context = buildCoachContext();
+
+    try {
+      await navigator.clipboard.writeText(context);
+    } catch {
+      // El usuario todavía podrá abrir el Gem aunque el clipboard falle.
+    }
+
+    window.open(
+      TOOL_LINKS.growthCoachGem,
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
+
+  const handleOpenCanva = () => {
+    // Construct URL with query parameters containing the value proposition
+    const params = new URLSearchParams({
+      problem: problem || '',
+      persona: persona || '',
+      value: value || '',
+      valueProposition: valueProposition || computedDraftProp || '',
+      language,
+    });
+
+    const url = `${TOOL_LINKS.canva}?${params.toString()}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,7 +196,7 @@ export function ScreenBuild({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-10 max-w-4xl mx-auto pb-16">
-      
+
       {/* 1. Header with Alpaca Mascot */}
       <div className="text-center space-y-3 pt-2">
         <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-amber-800 uppercase bg-amber-100/70 px-3 py-1 rounded-lg">
@@ -139,8 +223,8 @@ export function ScreenBuild({
         quote={t.alpacaMessage}
         language={language}
         coachName={t.coachName}
-        tip={language === 'pt' 
-          ? 'Não busque a frase perfeita agora. O importante é expressar com clareza a dor, o público e o alívio entregue.' 
+        tip={language === 'pt'
+          ? 'Não busque a frase perfeita agora. O importante é expressar com clareza a dor, o público e o alívio entregue.'
           : 'No busques la frase perfecta ahora. Lo importante es expresar con claridad el dolor, el público y el alivio que entregas.'}
       />
 
@@ -267,12 +351,12 @@ export function ScreenBuild({
             </div>
           ) : (
             <p className="text-sm sm:text-base text-stone-800 font-medium leading-relaxed italic bg-white/70 p-4 rounded-xl border border-stone-200/70">
-              “{valueProposition || currentCoachProposal}”
+              &ldquo;{valueProposition || currentCoachProposal}&rdquo;
             </p>
           )}
 
           {/* Action buttons */}
-          <div className="flex flex-wrap items-center gap-2 pt-1">
+          <div className="flex items-center justify-center gap-2 pt-1">
             <button
               type="button"
               onClick={handleUseProposal}
@@ -303,7 +387,56 @@ export function ScreenBuild({
         </div>
       </section>
 
-      {/* 4. Compact “Resultado de este paso” Card */}
+      {/* 3.5 AI Growth Coach Integration Block */}
+      <section aria-labelledby="ai-coach-integration-heading">
+        <div className="bg-gradient-to-br from-indigo-50/70 via-white to-amber-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
+              <Brain className="w-5 h-5 text-indigo-600" />
+            </div>
+
+            <div className="space-y-1 flex-1">
+              <h2
+                id="ai-coach-integration-heading"
+                className="text-lg font-bold text-stone-900"
+              >
+                AI Growth Coach
+              </h2>
+
+              <p className="text-sm text-stone-600 leading-relaxed">
+                {language === 'pt'
+                  ? 'Precisa de ajuda para interpretar os resultados ou decidir o que fazer a seguir?'
+                  : '¿Necesitas ayuda para interpretar los resultados o decidir qué hacer a continuación?'}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={handleOpenGrowthCoach}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              <span>
+                {language === 'pt'
+                  ? 'Consultar AI Growth Coach ↗'
+                  : 'Consultar AI Growth Coach ↗'}
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-3 p-3 rounded-xl bg-white/70 border border-stone-200/70">
+            <p className="text-[11px] leading-relaxed text-stone-500">
+              {language === 'pt'
+                ? 'Seu contexto será copiado automaticamente para facilitar a consulta.'
+                : 'Tu contexto será copiado automáticamente para facilitar la consulta.'}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Compact "Resultado de este paso" Card */}
       <section aria-labelledby="result-title">
         <div className="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-2xs space-y-4">
           <div className="flex items-center justify-between border-b border-stone-100 pb-3">
@@ -350,7 +483,71 @@ export function ScreenBuild({
               {t.resultCard.valuePropLabel}
             </span>
             <p className="text-sm font-semibold text-stone-900 italic leading-relaxed">
-              “{valueProposition || computedDraftProp || currentCoachProposal}”
+              &ldquo;{valueProposition || computedDraftProp || currentCoachProposal}&rdquo;
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4.5 Canva Integration Block */}
+      <section aria-labelledby="canva-integration-heading">
+        <div className="bg-gradient-to-br from-purple-50/70 via-white to-cyan-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
+              <Palette className="w-5 h-5 text-purple-600" />
+            </div>
+
+            <div className="space-y-1 flex-1">
+              <h2
+                id="canva-integration-heading"
+                className="text-lg font-bold text-stone-900"
+              >
+                Crear en Canva
+              </h2>
+
+              <p className="text-sm text-stone-600 leading-relaxed">
+                {language === 'pt'
+                  ? 'Usa Canva para converter esta estrutura em uma peça visual pronta para publicar.'
+                  : 'Usa Canva para convertir esta estructura en una pieza visual lista para publicar.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center flex-col sm:flex-row gap-3">
+            <button
+              type="button"
+              onClick={handleOpenCanva}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Palette className="w-4 h-4 text-white" />
+              <span>
+                {language === 'pt'
+                  ? 'Criar em Canva ↗'
+                  : 'Crear en Canva ↗'}
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = TOOL_LINKS.practicalGuide;
+              }}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl border border-stone-300 hover:bg-stone-50 text-stone-700 font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Eye className="w-4 h-4" />
+              <span>
+                {language === 'pt'
+                  ? 'Ver guía en pantalla ↗'
+                  : 'Ver guía en pantalla ↗'}
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-3 p-3 rounded-xl bg-white/70 border border-stone-200/70">
+            <p className="text-[11px] leading-relaxed text-stone-500">
+              {language === 'pt'
+                ? 'Sua proposta de valor será enviada automaticamente para Canva.'
+                : 'Tu propuesta de valor será enviada automáticamente a Canva.'}
             </p>
           </div>
         </div>

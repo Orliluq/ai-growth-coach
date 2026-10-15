@@ -1,19 +1,28 @@
-<div align="center">
+ <div align="center">
+
   <img src="./app/icon.svg" alt="Alpi — AI Growth Coach" width="120" height="120" />
 
-  # 🦙 AI Growth Coach
+# 🦙 AI Growth Coach
 
-  ### **Learn. Do. Improve.**
+### **Learn. Do. Improve.**
 
   <p>
     <strong>Convierte un objetivo de crecimiento en un experimento real, aprende mientras lo ejecutas y descubre qué hacer después.</strong>
   </p>
 
   <p>
-    <a href="#-el-producto"><img src="https://img.shields.io/badge/Product-AI--First-8B5CF6?style=for-the-badge" alt="Product" /></a>
-    <a href="#-el-viaje"><img src="https://img.shields.io/badge/Journey-7%20steps-F59E0B?style=for-the-badge" alt="7 step journey" /></a>
-    <a href="#-idiomas"><img src="https://img.shields.io/badge/Languages-ES%20%7C%20PT--BR-14B8A6?style=for-the-badge" alt="Languages" /></a>
-    <a href="#-principios"><img src="https://img.shields.io/badge/Human%20in%20the%20loop-Always-EC4899?style=for-the-badge" alt="Human in the loop" /></a>
+    <a href="#-el-producto">
+      <img src="https://img.shields.io/badge/Product-AI--First-8B5CF6?style=for-the-badge" alt="Product" />
+    </a>
+    <a href="#-el-viaje">
+      <img src="https://img.shields.io/badge/Journey-7%20steps-F59E0B?style=for-the-badge" alt="7 step journey" />
+    </a>
+    <a href="#-idiomas">
+      <img src="https://img.shields.io/badge/Languages-ES%20%7C%20PT--BR-14B8A6?style=for-the-badge" alt="Languages" />
+    </a>
+    <a href="#-principios">
+      <img src="https://img.shields.io/badge/Human%20in%20the%20loop-Always-EC4899?style=for-the-badge" alt="Human in the loop" />
+    </a>
   </p>
 
   <p>
@@ -22,26 +31,40 @@
     <img src="https://img.shields.io/badge/Tailwind%20CSS-4.1.11-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
     <img src="https://img.shields.io/badge/Google%20AI%20Studio-Build-4285F4?style=flat-square&logo=google&logoColor=white" alt="Google AI Studio" />
     <img src="https://img.shields.io/badge/Gemini-AI-8E75B2?style=flat-square&logo=google&logoColor=white" alt="Gemini" />
-    <img src="https://img.shields.io/badge/Claude-Strategy-D97757?style=flat-square" alt="Claude" />
+    <img src="https://img.shields.io/badge/Gems-AI%20Coach-4285F4?style=flat-square&logo=google&logoColor=white" alt="Gem" />
     <img src="https://img.shields.io/badge/NotebookLM-Knowledge-34A853?style=flat-square&logo=google&logoColor=white" alt="NotebookLM" />
     <img src="https://img.shields.io/badge/Google%20Forms-Input-673AB7?style=flat-square&logo=googleforms&logoColor=white" alt="Google Forms" />
     <img src="https://img.shields.io/badge/Google%20Sheets-Data-34A853?style=flat-square&logo=googlesheets&logoColor=white" alt="Google Sheets" />
     <img src="https://img.shields.io/badge/Make-Automation-6D4AFF?style=flat-square" alt="Make" />
     <img src="https://img.shields.io/badge/Canva-Execution-00C4CC?style=flat-square&logo=canva&logoColor=white" alt="Canva" />
   </p>
+
 </div>
 
 ---
 
-> **“La mayoría de las empresas no necesita otra herramienta de IA. Necesita saber qué hacer con las herramientas que ya tiene.”**
+> **La mayoría de las personas no necesita otra herramienta de IA. Necesita saber qué hacer con las herramientas que ya tiene.**
 
 ## 🦙 El producto
 
-**AI Growth Coach** es una experiencia guiada de crecimiento que combina **Marketing + Comunidad + Educación + IA** para ayudar a personas y equipos a pasar de una intención difusa a una acción medible.
+**AI Growth Coach** es una experiencia guiada de crecimiento que combina **Marketing + Comunidad + Educación + IA** para ayudar a personas y equipos a pasar de una intención difusa a una acción concreta, experimentable y medible.
+
+Está especialmente pensado para situaciones como:
+
+* crear o hacer crecer una comunidad;
+* desarrollar una iniciativa de contenido;
+* validar una idea;
+* mejorar el engagement;
+* lanzar un pequeño experimento de marketing;
+* convertir aprendizaje en acción.
 
 No intenta reemplazar el criterio humano.
 
-No es un chatbot al que le preguntas *“¿qué debería publicar?”* y te entrega un párrafo bonito.
+No es un chatbot al que preguntas:
+
+> “¿Qué debería publicar?”
+
+y responde con un párrafo bonito.
 
 Tampoco es una fábrica automática de contenido.
 
@@ -66,11 +89,11 @@ MEDICIÓN + APRENDIZAJE
 
 ### La idea central
 
-> **ChatGPT/Claude puede responder una pregunta. AI Growth Coach guía un proceso completo.**
+> **Gemini puede responder una pregunta. AI Growth Coach guía un proceso completo.**
 
-Y hay una segunda diferencia clave:
+Y una segunda diferencia:
 
-> **Un curso suele enseñar antes de ejecutar. AI Growth Coach enseña mientras ejecutas.**
+> **No necesitas aprenderlo todo antes de comenzar. Aprendes lo necesario para dar el siguiente paso.**
 
 ---
 
@@ -84,13 +107,13 @@ Es la falta de **dirección**.
 
 La persona puede preguntarse:
 
-- ¿Qué debería hacer primero?
-- ¿Necesito aprender Marketing antes de empezar?
-- ¿Cómo sé si mi idea tiene sentido?
-- ¿Qué debería probar?
-- ¿Qué métrica importa?
-- ¿Cómo sé si funcionó?
-- ¿Y qué hago después?
+* ¿Qué debería hacer primero?
+* ¿Necesito aprender Marketing antes de empezar?
+* ¿Cómo sé si mi idea tiene sentido?
+* ¿Qué debería probar?
+* ¿Qué métrica importa?
+* ¿Cómo sé si funcionó?
+* ¿Qué hago después?
 
 AI Growth Coach convierte ese caos en un recorrido claro:
 
@@ -102,35 +125,56 @@ AI Growth Coach convierte ese caos en un recorrido claro:
 
 La experiencia está estructurada en **7 etapas**. Cada una prepara la siguiente.
 
-| Paso | Pantalla | Pregunta que responde |
-|---|---|---|
-| 01 | **Define** | ¿Qué quiero conseguir? |
-| 02 | **Diagnose** | ¿Dónde estoy ahora? |
-| 03 | **Learn** | ¿Qué necesito entender para avanzar? |
-| 04 | **Build** | ¿Cómo lo convierto en algo concreto? |
-| 05 | **Experiment** | ¿Qué hipótesis vamos a probar? |
-| 06 | **Execute** | ¿Cómo lo llevo al mundo real? |
-| 07 | **Improve** | ¿Qué aprendimos y qué probamos después? |
+| Paso | Pantalla       | Pregunta que responde                  |
+| ---- | -------------- | -------------------------------------- |
+| 01   | **Define**     | ¿Qué quiero conseguir?                 |
+| 02   | **Diagnose**   | ¿Dónde estoy ahora?                    |
+| 03   | **Learn**      | ¿Qué necesito entender para avanzar?   |
+| 04   | **Build**      | ¿Cómo lo convierto en algo concreto?   |
+| 05   | **Experiment** | ¿Qué hipótesis vamos a probar?         |
+| 06   | **Execute**    | ¿Cómo lo llevo al mundo real?          |
+| 07   | **Improve**    | ¿Qué aprendimos y qué hacemos después? |
 
 ### 01 — Define
 
 El usuario establece el **objetivo, tipo de proyecto, plazo y nivel de experiencia**.
 
-No hay IA innecesaria todavía. Primero entendemos el contexto.
+No hay IA innecesaria todavía.
+
+Primero entendemos el contexto.
 
 ### 02 — Diagnose
 
-El coach identifica el **punto de partida y el principal cuello de botella** a partir de la información aportada por la persona.
+El coach ayuda a identificar el **punto de partida, señales, necesidades y principal bloqueo** a partir de la información proporcionada.
+
+La pregunta no es solamente:
+
+> “¿Qué quieres hacer?”
+
+También es:
+
+> “¿Qué está pasando realmente?”
 
 ### 03 — Learn
 
-La plataforma enseña **solo el concepto necesario para el siguiente paso**.
+La experiencia utiliza la **base de conocimiento** para enseñar solamente el concepto necesario para el siguiente paso.
 
-Nada de cursos infinitos. Nada de teoría por acumular teoría.
+Nada de cursos infinitos.
+
+Nada de teoría por acumular teoría.
+
+La intención es **aprender para avanzar**.
 
 ### 04 — Build
 
-La persona construye con el coach una primera versión de su propuesta, mensaje o pieza estratégica.
+La persona convierte el aprendizaje en algo concreto:
+
+* propuesta;
+* mensaje;
+* contenido;
+* iniciativa;
+* experimento;
+* pieza de comunicación.
 
 La IA propone.
 
@@ -142,28 +186,55 @@ La estrategia se transforma en una hipótesis medible:
 
 ```text
 Objetivo
-+ Hipótesis
-+ Canal
-+ Mensaje
-+ CTA
-+ KPI
-+ Baseline
-+ Duración
++
+Hipótesis
++
+Canal
++
+Mensaje
++
+CTA
++
+KPI
++
+Baseline
++
+Duración
 ```
+
+La unidad de valor no es “crear contenido”.
+
+Es **tener algo que podamos probar y de lo que podamos aprender**.
 
 ### 06 — Execute
 
-La hipótesis sale del chat y entra en el mundo real.
+La hipótesis sale del entorno de planificación y entra en el mundo real.
 
-Canva ayuda a convertir la estrategia en una pieza ejecutable.
+Las herramientas de creación y distribución ayudan a convertir la estrategia en una acción concreta.
+
+Canva puede utilizarse para transformar la idea en una pieza visual ejecutable.
+
+Forms y Sheets pueden utilizarse para recoger respuestas, resultados y evidencias.
+
+Make puede utilizarse para conectar y automatizar pasos repetitivos.
 
 ### 07 — Improve
 
 Se registran resultados y el coach ayuda a separar:
 
-**qué funcionó → qué no funcionó → qué evidencia tenemos → qué probamos después.**
+```text
+QUÉ FUNCIONÓ
+      ↓
+QUÉ NO FUNCIONÓ
+      ↓
+QUÉ EVIDENCIA TENEMOS
+      ↓
+QUÉ APRENDIMOS
+      ↓
+QUÉ PROBAMOS DESPUÉS
+```
 
-Y entonces el ciclo vuelve a empezar. 🔁
+El proceso vuelve a comenzar. 🔁
 
 ---
 
@@ -173,55 +244,205 @@ AI Growth Coach sigue una regla simple:
 
 > **La IA enseña + guía + estructura. Las personas deciden + ejecutan + validan.**
 
-Por eso la aplicación evita presentar como hechos cosas que son solamente:
+Por eso la experiencia distingue entre:
 
-- hipótesis,
-- inferencias,
-- recomendaciones,
-- o datos de demostración.
+* hechos;
+* datos;
+* hipótesis;
+* inferencias;
+* recomendaciones.
 
-Cuando se muestran resultados ficticios durante una demo, se identifican explícitamente como **datos de demostración**.
+Una recomendación generada por IA no se presenta como una verdad absoluta.
+
+Cuando se utilizan resultados ficticios durante una demo, se identifican explícitamente como **datos de demostración**.
+
+---
+
+## 📚 Base de conocimiento
+
+El conocimiento es una parte fundamental del producto.
+
+AI Growth Coach utiliza un **Knowledge Lab construido y curado con NotebookLM**.
+
+NotebookLM se utiliza para trabajar con fuentes seleccionadas, investigar conceptos, sintetizar información y organizar el conocimiento que alimenta la experiencia.
+
+Ese conocimiento se convierte en una base de referencia para el coach.
+
+### Knowledge Layer
+
+```text
+FUENTES
+   ↓
+NOTEBOOKLM
+   ↓
+INVESTIGACIÓN + SÍNTESIS
+   ↓
+CURACIÓN HUMANA
+   ↓
+BASE DE CONOCIMIENTO
+   ↓
+AI GROWTH COACH
+```
+
+El objetivo no es que la IA “sepa de todo”.
+
+Es que pueda trabajar con **contexto relevante y seleccionado**.
+
+### Ejemplos de conocimiento
+
+```text
+Community Strategy
+Content Strategy
+Growth Framework
+Metrics
+AI Governance
+Brand Voice
+```
+
+El conocimiento puede evolucionar a medida que aparecen nuevos aprendizajes, fuentes o resultados.
+
+---
+
+## 🧠 El cerebro: AI Growth Coach Gem
+
+El cerebro especializado de la experiencia es un **Gem personalizado en Gemini**.
+
+Los Gems permiten definir instrucciones específicas y repetibles para que Gemini siga un comportamiento especializado; además, pueden recibir archivos o incluso un cuaderno de NotebookLM como fuente de conocimiento.
+
+El Gem **AI Growth Coach** no está diseñado para responder preguntas genéricas de marketing.
+
+Su trabajo es seguir una metodología:
+
+```text
+🔎 SIGNAL
+   ↓
+🧠 INSIGHT
+   ↓
+🎯 PRIORITY
+   ↓
+🚀 ACTION
+   ↓
+📣 CONTENT
+   ↓
+📊 METRIC
+   ↓
+👩🏻‍💻 HUMAN REVIEW
+```
+
+Su función es ayudar a pasar de:
+
+> **“Tengo un problema.”**
+
+a:
+
+> **“Sé qué voy a probar, por qué y cómo voy a medirlo.”**
 
 ---
 
 ## 🧰 Ecosistema de herramientas
 
-AI Growth Coach no intenta reemplazar todas las herramientas existentes. Las **orquesta alrededor de un mismo proceso**.
+AI Growth Coach no intenta reemplazar todas las herramientas existentes.
 
-| Herramienta | Papel dentro del ecosistema |
-|---|---|
-| **Google AI Studio** | Construcción de la experiencia web y entorno de desarrollo asistido por IA |
-| **Gemini** | Generación, variantes, copy, ideas y adaptación de contenido |
-| **Claude** | Razonamiento estratégico, diagnóstico, análisis y reflexión durante el diseño de la metodología |
-| **NotebookLM** | Conocimiento educativo y fuentes de referencia |
-| **Google Forms** | Captura estructurada de resultados y feedback |
-| **Google Sheets** | Fuente operativa para datos, experimentos y métricas |
-| **Make** | Automatización y conexión entre entradas, procesamiento y resultados |
-| **Canva** | Conversión de estrategia en piezas visuales ejecutables |
+Las utiliza según el momento del proceso.
+
+| Herramienta          | Papel                                                    |
+| -------------------- | -------------------------------------------------------- |
+| **NotebookLM**       | Investigación, síntesis y conocimiento fundamentado      |
+| **Gem en Gemini**    | Coach especializado y guía estratégica                   |
+| **Gemini**           | Análisis, ideación, generación y adaptación de contenido |
+| **Google AI Studio** | Construcción y prototipado de la experiencia             |
+| **Google Forms**     | Captura estructurada de respuestas y feedback            |
+| **Google Sheets**    | Registro de datos, experimentos y métricas               |
+| **Make**             | Automatización de tareas y conexiones entre herramientas |
+| **Canva**            | Conversión de ideas y estrategias en piezas visuales     |
 
 ### Separación de responsabilidades
 
 ```text
                     🦙 AI GROWTH COACH
-                            │
-              ┌─────────────┼─────────────┐
-              │             │             │
-           APRENDER       HACER         MEDIR
-              │             │             │
-              ▼             ▼             ▼
-        NotebookLM       Canva       Forms / Sheets
-              │
-              └──────────┬──────────┘
-                         ▼
-                 Gemini + workflow
-                         │
-                         ▼
-                    INSIGHTS
-                         │
-                         ▼
-                  NEXT EXPERIMENT
-                         ↺
+                             │
+          ┌──────────────────┼──────────────────┐
+          │                  │                  │
+       APRENDER             HACER             MEDIR
+          │                  │                  │
+          ▼                  ▼                  ▼
+     NotebookLM           Gemini             Forms
+     Knowledge             + Gem             Sheets
+          │                  │                  │
+          │                  ▼                  │
+          │               Canva                │
+          │                  │                  │
+          └──────────────────┼──────────────────┘
+                             ▼
+                         APRENDIZAJE
+                             │
+                             ▼
+                      NEXT EXPERIMENT
+                             ↺
 ```
+
+La arquitectura es deliberadamente simple:
+
+> **cada herramienta tiene una función; no usamos IA solamente porque podemos.**
+
+---
+
+## 📣 De estrategia a contenido
+
+Una de las funciones del coach es convertir un insight en una acción que pueda ejecutarse en diferentes formatos y canales.
+
+Por ejemplo:
+
+### Insight
+
+> La comunidad muestra interés por IA, pero existe fricción para participar en actividades prácticas.
+
+### Acción
+
+> Crear un mini desafío práctico de 30 minutos.
+
+### Contenido
+
+**LinkedIn**
+Post educativo y profesional.
+
+**Discord**
+Mensaje cercano orientado a la participación.
+
+**Newsletter**
+Explicación breve + invitación.
+
+**Evento**
+Título, descripción y llamada a la acción.
+
+La misma estrategia puede transformarse en diferentes piezas sin perder el objetivo original.
+
+---
+
+## 📊 Medición
+
+AI Growth Coach evita utilizar únicamente métricas de vanidad.
+
+No basta con preguntar:
+
+> “¿Cuántos likes conseguimos?”
+
+El experimento debe definir una métrica relacionada con el objetivo.
+
+Ejemplos:
+
+* participación;
+* registros;
+* asistencia;
+* completion rate;
+* CTR;
+* conversión;
+* recurrencia;
+* retención.
+
+La métrica debe responder:
+
+> **¿La acción consiguió producir el cambio que queríamos observar?**
 
 ---
 
@@ -230,22 +451,22 @@ AI Growth Coach no intenta reemplazar todas las herramientas existentes. Las **o
 La aplicación nace bilingüe:
 
 ### 🇪🇸 Español
+
 ### 🇧🇷 Português do Brasil
 
 El selector de idioma no cambia solamente los botones.
 
 Cambia toda la experiencia de usuario:
 
-- navegación,
-- preguntas,
-- explicaciones,
-- ejercicios,
-- feedback,
-- mensajes de Alpi,
-- prompts,
-- recomendaciones,
-- contenido generado,
-- resultados.
+* navegación;
+* preguntas;
+* explicaciones;
+* ejercicios;
+* feedback;
+* mensajes de Alpi;
+* instrucciones del coach;
+* contenido generado;
+* resultados.
 
 **Nunca se mezclan español y portugués.**
 
@@ -259,23 +480,27 @@ Alpi es la mascota y guía de AI Growth Coach.
 
 Pero no está aquí solamente para verse adorable. 😌
 
-Alpi representa la filosofía del producto: **hacer que aprender Marketing e IA sea menos intimidante y más accionable.**
+Alpi representa la filosofía del producto:
+
+> **hacer que aprender Marketing e IA sea menos intimidante y más accionable.**
 
 Su personalidad acompaña cada etapa:
 
-| Momento | Alpi dice |
-|---|---|
-| Define | “Cuéntame qué quieres conseguir.” |
-| Diagnose | “Vamos paso a paso.” |
-| Learn | “Te explico justo lo que necesitas.” |
-| Build | “Ahora lo hacemos juntos.” |
-| Experiment | “Probemos una hipótesis.” |
-| Execute | “Llévalo al mundo real.” |
-| Improve | “¿Qué aprendimos?” |
+| Momento    | Alpi dice                            |
+| ---------- | ------------------------------------ |
+| Define     | “Cuéntame qué quieres conseguir.”    |
+| Diagnose   | “Vamos paso a paso.”                 |
+| Learn      | “Te explico justo lo que necesitas.” |
+| Build      | “Ahora lo hacemos juntos.”           |
+| Experiment | “Probemos una hipótesis.”            |
+| Execute    | “Llévalo al mundo real.”             |
+| Improve    | “¿Qué aprendimos?”                   |
 
 **Cute + credible.**
 
-La alpaca no reemplaza la estrategia; hace que la estrategia sea más humana. 🦙✨
+La alpaca no reemplaza la estrategia.
+
+Hace que la estrategia sea más humana. 🦙✨
 
 ---
 
@@ -287,7 +512,9 @@ El aprendizaje ocurre dentro del flujo de trabajo, no separado de él.
 
 ### 2. The experiment is the unit of value
 
-El resultado importante no es “generamos un post”.
+El resultado importante no es:
+
+> “Generamos un post.”
 
 Es:
 
@@ -299,17 +526,24 @@ La IA no toma decisiones de negocio de manera autónoma.
 
 ### 4. Evidence over guesswork
 
-Las conclusiones deben estar relacionadas con datos registrados y evidencias disponibles.
+Las conclusiones deben relacionarse con los datos y evidencias disponibles.
 
 ### 5. Context before generation
 
-Primero entendemos el problema. Después generamos.
+Primero entendemos el problema.
+
+Después generamos.
 
 ### 6. Simplicity over AI theatre
 
 No usamos IA solo porque podemos.
 
-La usamos cuando reduce fricción, mejora una decisión o acelera un aprendizaje.
+La usamos cuando:
+
+* reduce fricción;
+* mejora una decisión;
+* acelera un aprendizaje;
+* facilita la ejecución.
 
 ---
 
@@ -323,30 +557,41 @@ AI Growth Coach puede convertir esa frase en:
 
 ```text
 1. DEFINE
+
    “Conseguir 25 primeros miembros en 30 días.”
 
 2. DIAGNOSE
-   Identificar audiencia, activos actuales y principal bloqueo.
+
+   Identificar audiencia, activos actuales
+   y principal bloqueo.
 
 3. LEARN
-   Aprender qué hace que una propuesta de comunidad sea clara.
+
+   Comprender qué hace clara una propuesta
+   de valor para una comunidad.
 
 4. BUILD
+
    Crear una propuesta de valor concreta.
 
 5. EXPERIMENT
-   Formular una hipótesis para un canal y mensaje específicos.
+
+   Formular una hipótesis para un canal,
+   mensaje y CTA específicos.
 
 6. EXECUTE
+
    Crear la pieza y llevarla al canal elegido.
 
 7. IMPROVE
-   Registrar resultados → analizar evidencia → definir el siguiente experimento.
+
+   Registrar resultados → analizar evidencia
+   → definir el siguiente experimento.
 ```
 
 El producto no promete que la primera prueba vaya a funcionar.
 
-Promete algo mucho más útil:
+Promete algo más útil:
 
 > **que cada prueba deje un aprendizaje accionable.**
 
@@ -355,28 +600,34 @@ Promete algo mucho más útil:
 ## 🏗️ Arquitectura conceptual
 
 ```text
-┌─────────────────────────────────────────────────────────┐
-│                    AI GROWTH COACH                      │
-│                                                         │
-│   DEFINE → DIAGNOSE → LEARN → BUILD → EXPERIMENT      │
-│                                      ↓                  │
-│                                  EXECUTE                │
-│                                      ↓                  │
-│                                  IMPROVE                │
-└─────────────────────────────────────────────────────────┘
-                         │
-        ┌────────────────┼────────────────┐
-        ▼                ▼                ▼
-     KNOWLEDGE         AI LAYER       OPERATIONS
-        │                │                │
-   NotebookLM      Gemini / AI Studio  Forms / Sheets
-        │                │                │
-        └────────────────┼────────────────┘
-                         ▼
-                       Make
-                         │
-                         ▼
-                       Canva
+┌──────────────────────────────────────────────────────────┐
+│                    AI GROWTH COACH                       │
+│                                                          │
+│  DEFINE → DIAGNOSE → LEARN → BUILD → EXPERIMENT         │
+│                              ↓                           │
+│                          EXECUTE                         │
+│                              ↓                           │
+│                          IMPROVE                          │
+└──────────────────────────────────────────────────────────┘
+                              │
+             ┌────────────────┼────────────────┐
+             ▼                ▼                ▼
+         KNOWLEDGE          AI LAYER        OPERATIONS
+             │                │                │
+             ▼                ▼                ▼
+        NotebookLM       Gemini + Gem      Forms / Sheets
+             │                │                │
+             │                ▼                │
+             │              Canva              │
+             │                │                │
+             └────────────────┼────────────────┘
+                              ▼
+                           Make
+                              │
+                              ▼
+                       RESULTADOS + FEEDBACK
+                              │
+                              └──────→ NEXT EXPERIMENT
 ```
 
 ---
@@ -387,13 +638,19 @@ AI Growth Coach está pensado para trabajar con **el mínimo de datos necesario*
 
 El producto evita intencionalmente:
 
-- inferencias emocionales,
-- perfiles sensibles,
-- decisiones autónomas sobre personas,
-- métricas inventadas,
-- atribuciones presentadas como certezas cuando solo son hipótesis.
+* inferencias emocionales;
+* perfiles sensibles;
+* decisiones autónomas sobre personas;
+* métricas inventadas;
+* atribuciones presentadas como certezas cuando solo son hipótesis.
 
-La aplicación distingue entre **hechos, hipótesis, inferencias y recomendaciones**.
+La experiencia diferencia entre:
+
+**hechos → hipótesis → inferencias → recomendaciones**
+
+La IA recomienda.
+
+La persona decide.
 
 ---
 
@@ -401,68 +658,47 @@ La aplicación distingue entre **hechos, hipótesis, inferencias y recomendacion
 
 **Challenge MVP — en construcción.**
 
-La prioridad del MVP es demostrar un recorrido completo y funcional:
+La prioridad del MVP es demostrar un recorrido completo:
 
 ```text
 Objetivo
-  ↓
+   ↓
 Guía
-  ↓
+   ↓
 Aprendizaje
-  ↓
+   ↓
 Acción
-  ↓
+   ↓
 Experimento
-  ↓
+   ↓
 Resultado
-  ↓
+   ↓
 Aprendizaje
-  ↺
+   ↺
 ```
 
 El objetivo no es construir un SaaS gigantesco.
 
-Es demostrar una idea sencilla y poderosa:
+Es demostrar una idea sencilla:
 
 > **Una persona no necesita saberlo todo para empezar. Necesita saber cuál es su próximo paso.**
 
 ---
 
-## 🛠️ Instalación local
-
-```bash
-npm install
-npm run dev
-```
-
-Después abre la URL local mostrada por Next.js.
-
-### Comprobación de TypeScript
-
-```bash
-npx tsc --noEmit
-```
-
-### Importante sobre secretos
-
-Nunca agregues claves de API directamente al código fuente ni las publiques en GitHub.
-
-Usa el mecanismo de secretos o variables de entorno correspondiente al entorno donde ejecutes la aplicación.
-
----
-
 ## 🗺️ Próximos pasos
 
-- [x] Definir la metodología del producto
-- [x] Diseñar el recorrido de 7 etapas
-- [x] Incorporar Alpi como coach visual
-- [x] Preparar ES + PT-BR
-- [x] Integrar experiencia AI-first
-- [ ] Conectar captura y resultados reales
-- [ ] Conectar automatizaciones de Make
-- [ ] Refinar la capa educativa con NotebookLM
-- [ ] Validar el flujo con usuarios reales
-- [ ] Publicar demo del challenge
+* [x] Definir la metodología del producto
+* [x] Diseñar el recorrido de 7 etapas
+* [x] Incorporar Alpi como coach visual
+* [x] Preparar ES + PT-BR
+* [x] Diseñar el AI Growth Coach Gem
+* [x] Crear la base de conocimiento
+* [x] Integrar el enfoque NotebookLM + Gemini
+* [ ] Conectar captura y resultados reales
+* [ ] Conectar automatizaciones de Make
+* [ ] Incorporar ejecución visual con Canva
+* [ ] Validar el flujo con usuarios
+* [ ] Publicar demo del challenge
 
 ---
 
@@ -470,13 +706,15 @@ Usa el mecanismo de secretos o variables de entorno correspondiente al entorno d
 
 AI Growth Coach nace de una pregunta muy simple:
 
-> **¿Qué pasaría si aprender Marketing, usar IA y experimentar con un negocio fueran parte del mismo proceso?**
+> **¿Qué pasaría si aprender Marketing, utilizar IA y experimentar con una idea fueran parte del mismo proceso?**
 
 La respuesta es este producto.
 
 No se trata de hacer más cosas.
 
-Se trata de **hacer la siguiente cosa correcta**.
+Se trata de:
+
+> **hacer la siguiente cosa correcta.**
 
 ---
 
@@ -486,6 +724,8 @@ Se trata de **hacer la siguiente cosa correcta**.
 
 **Aprender → Hacer → Medir → Mejorar**
 
-Hecho con curiosidad, estrategia y una alpaca que insiste en que probemos una hipótesis más. Orli Dun 💛
+Hecho con curiosidad, estrategia y una alpaca que insiste en que probemos una hipótesis más.
+
+**Orli Dun 💛**
 
 </div>

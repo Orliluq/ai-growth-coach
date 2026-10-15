@@ -5,25 +5,26 @@ import {
   GrowthFormData, 
   DiagnoseFormData, 
   ExerciseOption, 
-  Language 
+  Language, 
+  GrowthAIContext
 } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaAvatar, AlpacaGuide } from './AlpacaGuide';
 import { 
   ArrowRight, 
   ArrowLeft, 
-  CheckCircle2, 
+  // CheckCircle2, 
   Sparkles, 
-  Lightbulb, 
+  // Lightbulb, 
   BookOpen, 
-  HelpCircle, 
+  // HelpCircle, 
   AlertCircle, 
   Target, 
   Check, 
-  Layers,
-  Flame,
+  // Layers,
+  // Flame,
   Zap,
-  Star,
+  // Star,
   Lock,
   Rocket,
   Users,
@@ -31,6 +32,7 @@ import {
   PenTool,
   GraduationCap
 } from 'lucide-react';
+import { TOOL_LINKS } from '@/lib/tool-links';
 
 interface ScreenLearnProps {
   t: TranslationSchema['screenLearn'];
@@ -42,6 +44,7 @@ interface ScreenLearnProps {
   onContinue: () => void;
   onBack: () => void;
   onError?: (message: string) => void;
+  aiContext: GrowthAIContext;
 }
 
 export function ScreenLearn({
@@ -54,6 +57,7 @@ export function ScreenLearn({
   onContinue,
   onBack,
   onError,
+  aiContext,
 }: ScreenLearnProps) {
   const [selectedExerciseOption, setSelectedExerciseOption] = useState<ExerciseOption | null>(null);
 
@@ -78,6 +82,114 @@ export function ScreenLearn({
   const difficultyLabel = diagnoseData.mainChallenge 
     ? tDiagnose.q3.options[diagnoseData.mainChallenge] 
     : null;
+
+const handleOpenNotebookLM = () => {
+  window.open(
+    TOOL_LINKS.notebookLM,
+    '_blank',
+    'noopener,noreferrer'
+  );
+};
+
+const buildCoachContext = () => {
+  const isPt = language === 'pt';
+
+  if (isPt) {
+    return `AI GROWTH COACH — CONTEXTO
+
+            Idioma: Português do Brasil
+
+            Tipo de projeto:
+            ${aiContext.project_type}
+
+            Objetivo:
+            ${aiContext.objective}
+
+            Público:
+            ${aiContext.audience}
+
+            O que já existe:
+            ${aiContext.current_assets.join(', ')}
+
+            Principal desafio:
+            ${aiContext.main_challenge}
+
+            Experiência com Marketing:
+            ${aiContext.marketing_experience}
+
+            Prazo:
+            ${aiContext.timeframe}
+
+            Preciso que você analise este contexto seguindo esta sequência:
+
+            1. SIGNAL — o que está acontecendo?
+            2. INSIGHT — o que isso significa?
+            3. PRIORITY — o que devemos priorizar e por quê?
+            4. ACTION — qual é a próxima ação concreta?
+            5. CONTENT — que conteúdo ou interação podemos criar?
+            6. METRIC — como vamos medir?
+            7. HUMAN REVIEW — o que uma pessoa precisa validar?
+
+            Não invente dados.
+            Diferencie fatos, hipóteses, inferências e recomendações.
+            A decisão final pertence à pessoa.`;
+  }
+
+  return `AI GROWTH COACH — CONTEXTO
+
+          Idioma: Español
+
+          Tipo de proyecto:
+          ${aiContext.project_type}
+
+          Objetivo:
+          ${aiContext.objective}
+
+          Audiencia:
+          ${aiContext.audience}
+
+          Qué existe actualmente:
+          ${aiContext.current_assets.join(', ')}
+
+          Principal desafío:
+          ${aiContext.main_challenge}
+
+          Experiencia en Marketing:
+          ${aiContext.marketing_experience}
+
+          Plazo:
+          ${aiContext.timeframe}
+
+          Necesito que analices este contexto siguiendo esta secuencia:
+
+          1. SIGNAL — ¿qué está ocurriendo?
+          2. INSIGHT — ¿qué significa?
+          3. PRIORITY — ¿qué debemos priorizar y por qué?
+          4. ACTION — ¿cuál es la siguiente acción concreta?
+          5. CONTENT — ¿qué contenido o interacción podemos crear?
+          6. METRIC — ¿cómo lo vamos a medir?
+          7. HUMAN REVIEW — ¿qué debe validar una persona?
+
+          No inventes datos.
+          Diferencia hechos, hipótesis, inferencias y recomendaciones.
+          La decisión final corresponde a la persona.`;
+  };
+
+const handleOpenGrowthCoach = async () => {
+  const context = buildCoachContext();
+
+  try {
+    await navigator.clipboard.writeText(context);
+  } catch {
+    // El usuario todavía podrá abrir el Gem aunque el clipboard falle.
+  }
+
+  window.open(
+    TOOL_LINKS.growthCoachGem,
+    '_blank',
+    'noopener,noreferrer'
+  );
+};
 
   return (
     <div className="space-y-10 max-w-4xl mx-auto pb-16">
@@ -112,6 +224,45 @@ export function ScreenLearn({
           ? 'Nossa meta é que você saiba exatamente o que colocar na sua mensagem antes de gerar os copys com IA.' 
           : 'Nuestra meta es que sepas exactamente qué poner en tu mensaje antes de generar los copys con IA.'}
       />
+
+      <section aria-labelledby="notebooklm-heading" className="space-y-4">
+        <div className="bg-gradient-to-br from-emerald-50/70 via-white to-indigo-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
+              <BookOpen className="w-5 h-5 text-emerald-600" />
+            </div>
+
+            <div className="space-y-1 flex-1">
+              <h2
+                id="notebooklm-heading"
+                className="text-lg font-bold text-stone-900"
+              >
+                Explora el conocimiento
+              </h2>
+
+              <p className="text-sm text-stone-600 leading-relaxed">
+                {language === 'pt'
+                  ? 'Profundiza em suas fontes, pesquisas e materiais sobre crescimento de comunidades.'
+                  : 'Profundiza en tus fuentes, investigaciones y materiales sobre crecimiento de comunidades.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={handleOpenNotebookLM}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white border border-stone-200 hover:border-emerald-300 hover:bg-emerald-50 text-stone-900 font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <span>
+                {language === 'pt'
+                  ? 'Abrir NotebookLM ↗'
+                  : 'Abrir NotebookLM ↗'}
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
 
       {/* 2. Contextual “Tu punto de partida” Summary Card */}
       <section aria-labelledby="starting-point-heading">
@@ -191,6 +342,55 @@ export function ScreenLearn({
                 {experienceItem?.label || t.startingPoint.unspecified}
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Growth Coach Integration Block */}
+      <section aria-labelledby="ai-coach-integration-heading">
+        <div className="bg-gradient-to-br from-indigo-50/70 via-white to-amber-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5 text-indigo-600" />
+            </div>
+
+            <div className="space-y-1 flex-1">
+              <h2
+                id="ai-coach-integration-heading"
+                className="text-lg font-bold text-stone-900"
+              >
+                AI Growth Coach
+              </h2>
+
+              <p className="text-sm text-stone-600 leading-relaxed">
+                {language === 'pt'
+                  ? 'Precisa de ajuda para interpretar os resultados ou decidir o que fazer a seguir?'
+                  : '¿Necesitas ayuda para interpretar los resultados o decidir qué hacer a continuación?'}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={handleOpenGrowthCoach}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              <span>
+                {language === 'pt'
+                  ? 'Consultar AI Growth Coach ↗'
+                  : 'Consultar AI Growth Coach ↗'}
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-3 p-3 rounded-xl bg-white/70 border border-stone-200/70">
+            <p className="text-[11px] leading-relaxed text-stone-500">
+              {language === 'pt'
+                ? 'Seu contexto será copiado automaticamente para facilitar a consulta.'
+                : 'Tu contexto será copiado automáticamente para facilitar la consulta.'}
+            </p>
           </div>
         </div>
       </section>

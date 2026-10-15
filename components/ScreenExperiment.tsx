@@ -11,21 +11,23 @@ import {
 } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaAvatar, AlpacaGuide } from './AlpacaGuide';
-import { 
-  FlaskConical, 
-  ArrowRight, 
-  ArrowLeft, 
-  Sparkles, 
-  CheckCircle2, 
-  Clock, 
-  Target, 
-  TrendingUp, 
-  Radio, 
-  MessageSquare, 
-  HelpCircle,
+import {
+  FlaskConical,
+  ArrowRight,
+  ArrowLeft,
+  Sparkles,
+  CheckCircle2,
+  // Clock,
+  // Target,
+  // TrendingUp,
+  // Radio,
+  // MessageSquare,
+  // HelpCircle,
   Lock,
-  Check
+  Check,
+  // Palette
 } from 'lucide-react';
+import { TOOL_LINKS } from '@/lib/tool-links';
 
 interface ScreenExperimentProps {
   t: TranslationSchema['screenExperiment'];
@@ -65,8 +67,8 @@ export function ScreenExperiment({
   );
   const [cta, setCta] = useState(
     initialData.cta || (language === 'pt' 
-      ? 'Baixar guia prático gratuito' 
-      : 'Descargar guía práctica gratuita')
+      ? 'Baixar guia prátic' 
+      : 'Descargar guía práctica')
   );
   const [kpi, setKpi] = useState<ExperimentKpi>(initialData.kpi || 'clicks');
   const [baseline, setBaseline] = useState(initialData.baseline || '0');
@@ -77,6 +79,21 @@ export function ScreenExperiment({
   const durationKeys: ExperimentDuration[] = ['7d', '14d', '30d'];
 
   const isComplete = objective.trim().length > 0 && hypothesis.trim().length > 0;
+
+  const handleOpenCanva = () => {
+    // Construct URL with query parameters containing the experiment data
+    const params = new URLSearchParams({
+      message: message || '',
+      cta: cta || '',
+      channel: channel || 'linkedin',
+      objective: objective || '',
+      hypothesis: hypothesis || '',
+      language,
+    });
+
+    const url = `${TOOL_LINKS.canva}?${params.toString()}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

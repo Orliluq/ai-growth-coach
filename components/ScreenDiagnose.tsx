@@ -12,25 +12,30 @@ import {
 } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaAvatar, AlpacaGuide } from './AlpacaGuide';
-import { 
-  ArrowRight, 
-  ArrowLeft, 
-  CheckCircle2, 
-  Sparkles, 
-  Stethoscope, 
-  HelpCircle, 
-  Users, 
-  Boxes, 
-  AlertTriangle, 
+import {
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle2,
+  Sparkles,
+  Stethoscope,
+  // HelpCircle,
+  Users,
+  Boxes,
+  AlertTriangle,
   GraduationCap,
-  Layers,
+  // Layers,
   Lock,
   Sprout,
   Smartphone,
   Mail,
   Briefcase,
-  Package
+  Package,
+  Brain,
+  Download,
+  // Eye,
+  Loader2
 } from 'lucide-react';
+import { TOOL_LINKS } from '@/lib/tool-links';
 
 interface ScreenDiagnoseProps {
   t: TranslationSchema['screenDiagnose'];
@@ -128,8 +133,104 @@ export function ScreenDiagnose({
   const isAssetsValid = currentAssets.length > 0 && (!currentAssets.includes('other') || otherAsset.trim().length > 0);
   const isChallengeValid = mainChallenge !== null && (mainChallenge !== 'other' || otherChallenge.trim().length > 0);
   const isExperienceValid = marketingExperience !== null;
-
+  const [isGenerating, setIsGenerating] = useState(false);
   const isFormComplete = isAudienceValid && isAssetsValid && isChallengeValid && isExperienceValid;
+
+  const buildCoachContext = () => {
+    const isPt = language === 'pt';
+
+    if (isPt) {
+      return `AI GROWTH COACH — CONTEXTO
+
+              Idioma: Português do Brasil
+
+              Público-alvo:
+              ${audience || 'A definir'}
+
+              O que você tem atualmente:
+              ${currentAssets.map(id => t.q2.options[id]).join(', ')}
+
+              Principal desafio:
+              ${mainChallenge ? t.q3.options[mainChallenge] : 'A definir'}
+
+              Experiência com Marketing:
+              ${marketingExperience ? t.q4.options[marketingExperience].label : 'A definir'}
+
+              Preciso que você me ajude a:
+              - Interpretar meu cenário atual
+              - Identificar pontos de melhoria
+              - Sugerir próximos passos
+
+              Não invente dados.
+              Diferencie fatos, hipóteses, inferências e recomendações.
+              A decisão final pertence à pessoa.`;
+    }
+
+    return `AI GROWTH COACH — CONTEXTO
+
+            Idioma: Español
+
+            Audiencia:
+            ${audience || 'A definir'}
+
+            Qué tienes actualmente:
+            ${currentAssets.map(id => t.q2.options[id]).join(', ')}
+
+            Principal desafío:
+            ${mainChallenge ? t.q3.options[mainChallenge] : 'A definir'}
+
+            Experiencia en Marketing:
+            ${marketingExperience ? t.q4.options[marketingExperience].label : 'A definir'}
+
+            Necesito que me ayudes a:
+            - Interpretar mi escenario actual
+            - Identificar puntos de mejora
+            - Sugerir próximos pasos
+
+            No inventes datos.
+            Diferencia hechos, hipótesis, inferencias y recomendaciones.
+            La decisión final corresponde a la persona.`;
+      };
+
+  const handleOpenGrowthCoach = async () => {
+    const context = buildCoachContext();
+
+    try {
+      await navigator.clipboard.writeText(context);
+    } catch {
+      // El usuario todavía podrá abrir el Gem aunque el clipboard falle.
+    }
+
+    window.open(
+      TOOL_LINKS.growthCoachGem,
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
+
+  const handleDownloadGuide = () => {
+  setIsGenerating(true);
+
+  const url = new URL(
+    TOOL_LINKS.practicalGuide,
+    window.location.origin
+  );
+
+  url.searchParams.set('download', '1');
+  url.searchParams.set('lang', language);
+
+  window.open(
+    url.toString(),
+    '_blank',
+    'noopener,noreferrer'
+  );
+
+  // El PDF se genera en la nueva pestaña.
+  // Liberamos el estado del botón después de abrirla.
+  window.setTimeout(() => {
+    setIsGenerating(false);
+  }, 1000);
+};
 
   const handleContinue = (e: React.FormEvent) => {
     e.preventDefault();
@@ -470,6 +571,110 @@ export function ScreenDiagnose({
           <p className="text-xs text-stone-400 pt-1">
             {t.aiPreview.notice}
           </p>
+        </div>
+      </section>
+
+      {/* AI Growth Coach Integration Block */}
+      <section aria-labelledby="ai-coach-integration-heading">
+        <div className="bg-gradient-to-br from-indigo-50/70 via-white to-amber-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
+              <Brain className="w-5 h-5 text-indigo-600" />
+            </div>
+
+            <div className="space-y-1 flex-1">
+              <h2
+                id="ai-coach-integration-heading"
+                className="text-lg font-bold text-stone-900"
+              >
+                AI Growth Coach
+              </h2>
+
+              <p className="text-sm text-stone-600 leading-relaxed">
+                {language === 'pt'
+                  ? 'Precisa de ajuda para interpretar os resultados ou decidir o que fazer a seguir?'
+                  : '¿Necesitas ayuda para interpretar los resultados o decidir qué hacer a continuación?'}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={handleOpenGrowthCoach}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              <span>
+                {language === 'pt'
+                  ? 'Consultar AI Growth Coach ↗'
+                  : 'Consultar AI Growth Coach ↗'}
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-3 p-3 rounded-xl bg-white/70 border border-stone-200/70">
+            <p className="text-[11px] leading-relaxed text-stone-500">
+              {language === 'pt'
+                ? 'Seu contexto será copiado automaticamente para facilitar a consulta.'
+                : 'Tu contexto será copiado automáticamente para facilitar la consulta.'}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Practical Guide Download Block */}
+      <section aria-labelledby="guide-download-heading">
+        <div className="bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
+              <Download className="w-5 h-5 text-emerald-600" />
+            </div>
+
+            <div className="space-y-1 flex-1">
+              <h2
+                id="guide-download-heading"
+                className="text-lg font-bold text-stone-900"
+              >
+                Guía práctica
+              </h2>
+
+              <p className="text-sm text-stone-600 leading-relaxed">
+                {language === 'pt'
+                  ? 'Obtenha um guia prático para aplicar o que aprendeu sobre community growth.'
+                  : 'Obtén una guía práctica para aplicar lo que aprendiste sobre community growth.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 w-full sm:w-auto flex items-center justify-center flex-col sm:flex-row gap-3">
+            <button
+              type="button"
+              onClick={handleDownloadGuide}
+              disabled={isGenerating}
+              className="inline-flex items-center gap-2 rounded-xl bg-amber-900 px-8 py-2.5 text-xs font-bold text-white transition hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+            {isGenerating ? (
+            <span className="flex items-center gap-2">
+              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              {language === 'pt' ? 'Gerando PDF...' : 'Generando PDF...'}
+            </span>
+            ) : (
+            <span className="flex items-center gap-2">
+              <Download className="w-3.5 h-3.5" />
+              {language === 'pt' ? 'Ver guía ↗' : 'Ver guía ↗'}
+            </span>
+            )}
+          </button>
+          </div>
+
+          <div className="mt-3 p-3 rounded-xl bg-white/70 border border-stone-200/70">
+            <p className="text-[11px] leading-relaxed text-stone-500">
+              {language === 'pt'
+                ? 'Este guia complementa o aprendizado do NotebookLM com exemplos práticos.'
+                : 'Esta guía complementa el aprendizaje de NotebookLM con ejemplos prácticos.'}
+            </p>
+          </div>
         </div>
       </section>
 

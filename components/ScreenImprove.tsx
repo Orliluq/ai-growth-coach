@@ -9,15 +9,15 @@ import {
   Sparkles, 
   RotateCcw, 
   Bookmark, 
-  CheckCircle2, 
-  AlertCircle, 
+  // CheckCircle2, 
+  // AlertCircle, 
   BarChart3, 
   ArrowRight, 
   ArrowLeft, 
   Check, 
   RefreshCw, 
-  Compass, 
-  Award,
+  // Compass, 
+  // Award,
   Zap
 } from 'lucide-react';
 
@@ -25,18 +25,18 @@ interface ScreenImproveProps {
   t: TranslationSchema['screenImprove'];
   language: Language;
   initialData?: Partial<ImproveFormData>;
-  onChange?: (data: ImproveFormData) => void;
   onRestartLoop: () => void;
   onBack: () => void;
+  onOpenNextHypothesis?: () => void;
 }
 
 export function ScreenImprove({
   t,
   language,
   initialData,
-  onChange,
   onRestartLoop,
   onBack,
+  onOpenNextHypothesis,
 }: ScreenImproveProps) {
   const [impressions, setImpressions] = useState(initialData?.impressions || '480');
   const [clicks, setClicks] = useState(initialData?.clicks || '48');
@@ -48,11 +48,6 @@ export function ScreenImprove({
   const [hasAnalyzed, setHasAnalyzed] = useState(true);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [savedToast, setSavedToast] = useState(false);
-
-  // Persist metrics so a refresh does not discard the recorded results
-  React.useEffect(() => {
-    onChange?.({ impressions, clicks, signups, engagement, conversions, notes });
-  }, [impressions, clicks, signups, engagement, conversions, notes, onChange]);
 
   const handleAnalyze = () => {
     setIsAnalyzing(true);
@@ -96,7 +91,6 @@ export function ScreenImprove({
       {/* Alpaca Mascot Learning Guide Banner */}
       <AlpacaGuide
         quote={t.alpacaMessage}
-        language={language}
         coachName={t.coachName}
         tip={language === 'pt' 
           ? 'Não existem experimentos fracassados, apenas dados que indicam como ajustar o próximo tiro.' 
@@ -198,7 +192,7 @@ export function ScreenImprove({
             />
           </div>
 
-          <div className="pt-1 flex items-center justify-end">
+          <div className="pt-1 flex items-center justify-center">
             <button
               type="button"
               onClick={handleAnalyze}
@@ -300,13 +294,38 @@ export function ScreenImprove({
             </div>
 
             {/* Next Experiment Card */}
-            <div className="p-5 rounded-xl bg-gradient-to-r from-amber-50/90 to-purple-50/60 border border-amber-200/80 space-y-1.5">
-              <span className="text-xs font-mono-data font-bold uppercase tracking-wider text-amber-900 block">
-                {t.nextExperimentCard.title}
-              </span>
-              <p className="text-sm font-semibold text-stone-900 leading-relaxed italic">
+            <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-amber-50/90 via-amber-50/60 to-purple-50/50 border border-amber-200/90 shadow-2xs space-y-4">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <span className="text-xs font-mono-data font-bold uppercase tracking-wider text-amber-900 inline-flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                  {t.nextExperimentCard.title}
+                </span>
+                <span className="text-[11px] font-mono-data font-bold uppercase tracking-wide bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded-full border border-amber-200/60">
+                  {language === 'pt' ? 'Iteração 02' : 'Iteración 02'}
+                </span>
+              </div>
+
+              <p className="text-sm sm:text-base font-semibold text-stone-900 leading-relaxed italic bg-white/75 p-4 rounded-xl border border-amber-100">
                 “{t.nextExperimentCard.text}”
               </p>
+
+              {/* Botón abajo de Tu próxima hipótesis */}
+              <div className="pt-2 border-t border-amber-200/70 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <p className="text-xs text-amber-950/80 font-medium flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                  <span>{t.nextExperimentCard.buttonHint}</span>
+                </p>
+                <button
+                  type="button"
+                  data-action="open-next-hypothesis"
+                  onClick={onOpenNextHypothesis}
+                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-amber-900 hover:bg-amber-950 text-white font-bold text-xs sm:text-sm shadow-xs hover:shadow transition-all duration-150 flex items-center justify-center gap-2.5 cursor-pointer group shrink-0"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" />
+                  <span>{t.nextExperimentCard.buttonText}</span>
+                  <ArrowRight className="w-4 h-4 text-amber-200 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
 
           </div>

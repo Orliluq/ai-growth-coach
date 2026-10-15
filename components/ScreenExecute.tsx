@@ -9,22 +9,26 @@ import {
 } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaAvatar, AlpacaGuide } from './AlpacaGuide';
-import { 
-  Rocket, 
-  ArrowRight, 
-  ArrowLeft, 
-  Check, 
-  ExternalLink, 
-  FileText, 
-  Sparkles, 
-  CheckSquare, 
-  Square, 
-  Eye, 
-  Layout, 
-  Share2, 
-  Compass,
-  ArrowDown
+import {
+  Rocket,
+  ArrowRight,
+  ArrowLeft,
+  Check,
+  ExternalLink,
+  FileText,
+  // Sparkles,
+  CheckSquare,
+  Square,
+  Eye,
+  Layout,
+  // Share2,
+  // Compass,
+  ArrowDown,
+  Play,
+  Sheet,
+  FileSpreadsheet
 } from 'lucide-react';
+import { TOOL_LINKS } from '@/lib/tool-links';
 
 interface ScreenExecuteProps {
   t: TranslationSchema['screenExecute'];
@@ -65,8 +69,63 @@ export function ScreenExecute({
   };
 
   const handleCanvaClick = () => {
+    const params = new URLSearchParams({
+      message: experimentData.message || '',
+      cta: experimentData.cta || '',
+      channel: experimentData.channel || 'linkedin',
+      objective: experimentData.objective || '',
+      hypothesis: experimentData.hypothesis || '',
+      language,
+    });
+
+    const url = `${TOOL_LINKS.canva}?${params.toString()}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+
     setCanvaSimulated(true);
     setTimeout(() => setCanvaSimulated(false), 4000);
+  };
+
+  const handleOpenMakeScenario = () => {
+    // Construct URL with query parameters containing the experiment data
+    const params = new URLSearchParams({
+      message: experimentData.message || '',
+      cta: experimentData.cta || '',
+      channel: experimentData.channel || 'linkedin',
+      objective: experimentData.objective || '',
+      hypothesis: experimentData.hypothesis || '',
+      language,
+    });
+
+    const url = `${TOOL_LINKS.makeScenario}?${params.toString()}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleOpenImproveForm = () => {
+    const params = new URLSearchParams({
+      message: experimentData.message || '',
+      cta: experimentData.cta || '',
+      channel: experimentData.channel || 'linkedin',
+      objective: experimentData.objective || '',
+      hypothesis: experimentData.hypothesis || '',
+      language,
+    });
+
+    const url = `${TOOL_LINKS.improveForm}?${params.toString()}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleOpenResultsSheet = () => {
+    const params = new URLSearchParams({
+      message: experimentData.message || '',
+      cta: experimentData.cta || '',
+      channel: experimentData.channel || 'linkedin',
+      objective: experimentData.objective || '',
+      hypothesis: experimentData.hypothesis || '',
+      language,
+    });
+
+    const url = `${TOOL_LINKS.resultsSheet}?${params.toString()}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const checklistKeys: Array<keyof ExecuteChecklist> = [
@@ -209,7 +268,7 @@ export function ScreenExecute({
               <span className="text-[10px] font-mono-data uppercase font-bold text-stone-400 block mb-1">
                 {t.assetPreview.ctaLabel}
               </span>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-stone-900 text-white font-bold text-xs">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-stone-700 text-white font-bold text-xs">
                 <span>{experimentData.cta || t.assetPreview.ctaText}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
@@ -299,7 +358,122 @@ export function ScreenExecute({
         </div>
       </section>
 
-      {/* 6. Primary CTA & Secondary Action */}
+      {/* 5.5 Make Scenario Integration Block */}
+      <section aria-labelledby="make-scenario-heading">
+        <div className="bg-gradient-to-br from-rose-50/70 via-white to-orange-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
+              <Play className="w-5 h-5 text-rose-600" />
+            </div>
+
+            <div className="space-y-1 flex-1">
+              <h2
+                id="make-scenario-heading"
+                className="text-lg font-bold text-stone-900"
+              >
+                Make Scenario
+              </h2>
+
+              <p className="text-sm text-stone-600 leading-relaxed">
+                {language === 'pt'
+                  ? 'Crie um cenário visualizado do seu experimento antes de executar.'
+                  : 'Crea un escenario visualizado de tu experimento antes de ejecutar.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={handleOpenMakeScenario}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Play className="w-4 h-4 text-white" />
+              <span>
+                {language === 'pt'
+                  ? 'Criar cenário ↗'
+                  : 'Crear escenario ↗'}
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-3 p-3 rounded-xl bg-white/70 border border-stone-200/70">
+            <p className="text-[11px] leading-relaxed text-stone-500">
+              {language === 'pt'
+                ? 'Sua mensagem, CTA e canal serão utilizados para criar o cenário.'
+                : 'Tu mensaje, CTA y canal serán utilizados para crear el escenario.'}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Recopilación de datos: Formulario + Hoja de cálculo */}
+      <section aria-labelledby="data-capture-heading">
+        <div className="bg-gradient-to-br from-emerald-50/70 via-white to-sky-50/60 border border-emerald-200/70 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-4">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
+              <FileSpreadsheet className="w-5 h-5 text-emerald-600" />
+            </div>
+
+            <div className="space-y-1 flex-1">
+              <h2
+                id="data-capture-heading"
+                className="text-lg font-bold text-stone-900"
+              >
+                {language === 'pt'
+                  ? 'Recopilar dados e feedback'
+                  : 'Recopilar datos y feedback'}
+              </h2>
+
+              <p className="text-sm text-stone-600 leading-relaxed">
+                {language === 'pt'
+                  ? 'Usa o formulário para capturar respostas estruturadas e a planilha para registrar os resultados del experimento.'
+                  : 'Usa el formulario para capturar respuestas estructuradas y la hoja de cálculo para registrar los resultados del experimento.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button
+              type="button"
+              onClick={handleOpenImproveForm}
+              className="w-full px-5 py-3.5 rounded-xl bg-white border-2 border-emerald-200 hover:bg-emerald-50 text-emerald-800 font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm hover:shadow"
+            >
+              <FileText className="w-4 h-4 text-emerald-600" />
+              <span>
+                {language === 'pt'
+                  ? 'Abrir formulário ↗'
+                  : 'Abrir formulario ↗'}
+              </span>
+              <ExternalLink className="w-3.5 h-3.5 text-emerald-400" />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleOpenResultsSheet}
+              className="w-full px-5 py-3.5 rounded-xl bg-white border-2 border-sky-200 hover:bg-sky-50 text-sky-800 font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm hover:shadow"
+            >
+              <Sheet className="w-4 h-4 text-sky-600" />
+              <span>
+                {language === 'pt'
+                  ? 'Abrir planilha ↗'
+                  : 'Abrir hoja de cálculo ↗'}
+              </span>
+              <ExternalLink className="w-3.5 h-3.5 text-sky-400" />
+            </button>
+          </div>
+
+          <div className="p-3 rounded-xl bg-white/70 border border-stone-200/70">
+            <p className="text-[11px] leading-relaxed text-stone-500">
+              {language === 'pt'
+                ? 'Tu mensaje, CTA y canal serán pasados como parámetros para agilizar el registro.'
+                : 'Tu mensaje, CTA y canal se pasarán como parámetros para agilizar el registro.'}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Primary CTA & Secondary Action */}
       <div className="pt-4 flex flex-col items-center justify-center space-y-3">
         <div className="flex flex-col-reverse sm:flex-row items-center gap-3 w-full sm:w-auto">
           <button

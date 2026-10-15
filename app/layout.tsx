@@ -2,7 +2,7 @@ import type {Metadata, Viewport} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ai-growth-coach.vercel.app'),
+  metadataBase: new URL(''),
   title: 'AI Growth Coach — Learn. Do. Improve.',
   description: 'Turn your business goal into a guided marketing workflow with AI tools and your friendly alpaca coach.',
   applicationName: 'AI Growth Coach',

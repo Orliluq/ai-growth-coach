@@ -23,6 +23,7 @@ import { ScreenBuild } from '@/components/ScreenBuild';
 import { ScreenExperiment } from '@/components/ScreenExperiment';
 import { ScreenExecute } from '@/components/ScreenExecute';
 import { ScreenImprove } from '@/components/ScreenImprove';
+import { ScreenNextHypothesis } from '@/components/ScreenNextHypothesis';
 import { ToastContainer, ToastMessage, ToastType } from '@/components/Toast';
 import { Sparkles, Command, ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -98,8 +99,8 @@ export default function HomePage() {
 
   const [currentStep, setCurrentStep] = useState<StepNumber>(1);
   const [maxUnlockedStep, setMaxUnlockedStep] = useState<number>(1);
+  const [viewingNextHypothesis, setViewingNextHypothesis] = useState<boolean>(false);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
-  const [isHydrated, setIsHydrated] = useState<boolean>(false);
 
   const showToast = (message: string, type: ToastType = 'error') => {
     const id = Math.random().toString(36).substring(2, 9);
@@ -116,6 +117,12 @@ export default function HomePage() {
   // Keyboard navigation: 'Ctrl + Enter' to submit active step, 'Arrow Keys' to change steps
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Escape key exits the next hypothesis deep-dive view
+      if (e.key === 'Escape' && viewingNextHypothesis) {
+        setViewingNextHypothesis(false);
+        return;
+      }
+
       // 1. 'Ctrl + Enter' or 'Cmd + Enter' to submit active form / step
       if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
         e.preventDefault();
@@ -171,7 +178,7 @@ export default function HomePage() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentStep, maxUnlockedStep, language]);
+  }, [currentStep, maxUnlockedStep, language, viewingNextHypothesis]);
 
   // Safely restore persisted state after hydration to avoid SSR/client mismatch
   React.useEffect(() => {
@@ -200,9 +207,6 @@ export default function HomePage() {
         const savedExec = localStorage.getItem('growth_coach_execute');
         if (savedExec) setExecuteChecklist(JSON.parse(savedExec));
 
-        const savedImprove = localStorage.getItem('growth_coach_improve');
-        if (savedImprove) setImproveData(JSON.parse(savedImprove));
-
         // Calculate maximum unlocked step
         if (savedExec) {
           setMaxUnlockedStep(7);
@@ -217,18 +221,11 @@ export default function HomePage() {
         }
       } catch {
         // Storage access error or invalid JSON
-      } finally {
-        setIsHydrated(true);
       }
     }, 0);
 
     return () => clearTimeout(timer);
   }, []);
-
-  // Keep the document language in sync for screen readers / hyphenation
-  React.useEffect(() => {
-    document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'es';
-  }, [language]);
 
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
@@ -295,21 +292,37 @@ export default function HomePage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleImproveChange = (data: ImproveFormData) => {
-    setImproveData(data);
-    try {
-      localStorage.setItem('growth_coach_improve', JSON.stringify(data));
-    } catch {}
-  };
-
   const handleRestartLoop = () => {
     // Loop back to Step 04 (or Step 05) with learnings incorporated!
+    setViewingNextHypothesis(false);
     setCurrentStep(4);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectStep = (step: StepNumber) => {
+    setViewingNextHypothesis(false);
     setCurrentStep(step);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleApplyHypothesis = (hypoQuote: string) => {
+    setExperimentData((prev) => ({
+      ...prev,
+      hypothesis: hypoQuote,
+      objective: language === 'pt' ? 'Aumentar a taxa de conversão para 28%' : 'Aumentar la tasa de registro al 28%',
+      channel: 'linkedin',
+      kpi: 'signups',
+      duration: '7d',
+    }));
+    setViewingNextHypothesis(false);
+    setCurrentStep(5);
+    setMaxUnlockedStep((prev) => Math.max(prev, 5));
+    showToast(
+      language === 'pt'
+        ? 'Hipótese aplicada com sucesso! Etapa 05 aberta para calibrar o experimento.'
+        : '¡Hipótesis aplicada con éxito! Paso 05 abierto para calibrar el experimento.',
+      'success'
+    );
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -348,17 +361,19 @@ export default function HomePage() {
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8">
         
         {/* 7-Step Progress Indicator */}
-        <section aria-label="Progress workflow">
-          <ProgressSteps
-            steps={t.navigation.steps}
-            currentStep={currentStep}
-            onSelectStep={handleSelectStep}
-            maxUnlockedStep={maxUnlockedStep}
-          />
-        </section>
+        {!viewingNextHypothesis && (
+          <section aria-label="Progress workflow">
+            <ProgressSteps
+              steps={t.navigation.steps}
+              currentStep={currentStep}
+              onSelectStep={handleSelectStep}
+              maxUnlockedStep={maxUnlockedStep}
+            />
+          </section>
+        )}
 
         {/* Quick demo banner if on step 1 without input */}
-        {isHydrated && currentStep === 1 && !formData.goalCategory && !formData.targetDescription && (
+        {currentStep === 1 && !formData.goalCategory && !formData.targetDescription && (
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 sm:px-4 bg-amber-50/80 border border-amber-200/60 rounded-xl text-xs text-amber-950">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-600 shrink-0" />
@@ -380,8 +395,32 @@ export default function HomePage() {
 
         {/* Dynamic Screen Content with Smooth Transitions */}
         <AnimatePresence mode="wait">
-          {/* STEP 01 — DEFINE */}
-          {currentStep === 1 && (
+          {viewingNextHypothesis ? (
+            <motion.div
+              key="next-hypothesis-deep-dive"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25 }}
+            >
+              <ScreenNextHypothesis
+                t={t.screenNextHypothesis}
+                language={language}
+                buildData={buildData}
+                previousExperimentData={experimentData}
+                previousImproveData={improveData}
+                onBack={() => {
+                  setViewingNextHypothesis(false);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onApplyHypothesis={handleApplyHypothesis}
+                onToast={showToast}
+              />
+            </motion.div>
+          ) : (
+            <>
+              {/* STEP 01 — DEFINE */}
+              {currentStep === 1 && (
             <motion.div
               key="step-1"
               initial={{ opacity: 0, y: 8 }}
@@ -390,12 +429,10 @@ export default function HomePage() {
               transition={{ duration: 0.2 }}
             >
               <ScreenDefine
-                t={t.screenDefine}
-                language={language}
-                initialData={formData}
-                onSubmit={handleDefineSubmit}
-                onError={(msg) => showToast(msg, 'error')}
-              />
+                      t={t.screenDefine}
+                      initialData={formData}
+                      onSubmit={handleDefineSubmit}
+                      onError={(msg) => showToast(msg, 'error')} language={'es'}              />
             </motion.div>
           )}
 
@@ -430,16 +467,17 @@ export default function HomePage() {
               transition={{ duration: 0.2 }}
             >
               <ScreenLearn
-                t={t.screenLearn}
-                tDefine={t.screenDefine}
-                tDiagnose={t.screenDiagnose}
-                language={language}
-                defineData={formData}
-                diagnoseData={diagnoseData}
-                onContinue={handleLearnContinue}
-                onBack={() => handleSelectStep(2)}
-                onError={(msg) => showToast(msg, 'error')}
-              />
+                      t={t.screenLearn}
+                      tDefine={t.screenDefine}
+                      tDiagnose={t.screenDiagnose}
+                      language={language}
+                      defineData={formData}
+                      diagnoseData={diagnoseData}
+                      onContinue={handleLearnContinue}
+                      onBack={() => handleSelectStep(2)}
+                      onError={(msg) => showToast(msg, 'error')}
+                      aiContext={aiContext}
+                  />
             </motion.div>
           )}
 
@@ -519,13 +557,18 @@ export default function HomePage() {
                 t={t.screenImprove}
                 language={language}
                 initialData={improveData}
-                onChange={handleImproveChange}
                 onRestartLoop={handleRestartLoop}
                 onBack={() => handleSelectStep(6)}
+                onOpenNextHypothesis={() => {
+                  setViewingNextHypothesis(true);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
               />
             </motion.div>
           )}
-        </AnimatePresence>
+        </>
+      )}
+    </AnimatePresence>
 
       </main>
 
@@ -561,8 +604,8 @@ export default function HomePage() {
           <div className="flex items-center gap-3">
             <span>
               {language === 'pt' 
-                ? 'Protótipo Educacional de Marketing com IA por Orli Dun' 
-                : 'Prototipo Educativo de Marketing con IA por Orli Dun'}
+                ? 'Protótipo de Marketing com IA por Orli Dun' 
+                : 'Prototipo de Marketing con IA por Orli Dun'}
             </span>
             <span>·</span>
             <span>2026</span>
@@ -571,11 +614,7 @@ export default function HomePage() {
       </footer>
 
       {/* Simple Toast Notification Component */}
-      <ToastContainer
-        toasts={toasts}
-        onDismiss={dismissToast}
-        closeLabel={language === 'pt' ? 'Fechar notificação' : 'Cerrar notificación'}
-      />
+      <ToastContainer toasts={toasts} onDismiss={dismissToast} />
 
     </div>
   );

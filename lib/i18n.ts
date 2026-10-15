@@ -291,6 +291,8 @@ export interface TranslationSchema {
     nextExperimentCard: {
       title: string;
       text: string;
+      buttonText: string;
+      buttonHint: string;
     };
     loopVisual: {
       title: string;
@@ -304,6 +306,106 @@ export interface TranslationSchema {
     primaryCta: string;
     secondaryCta: string;
     savedToast: string;
+  };
+  screenNextHypothesis: {
+    backToImprove: string;
+    badge: string;
+    iterationLabel: string;
+    statusBadge: string;
+    title: string;
+    subtitle: string;
+    hypothesisCard: {
+      label: string;
+      quote: string;
+      tags: {
+        channel: string;
+        channelVal: string;
+        kpi: string;
+        kpiVal: string;
+        baseline: string;
+        baselineVal: string;
+        target: string;
+        targetVal: string;
+        sampleSize: string;
+        sampleSizeVal: string;
+        duration: string;
+        durationVal: string;
+      };
+    };
+    coachSection: {
+      coachName: string;
+      title: string;
+      diagnostic: string;
+      keyInsight: string;
+      quote: string;
+    };
+    comparisonMatrix: {
+      title: string;
+      subtitle: string;
+      control: {
+        badge: string;
+        title: string;
+        headline: string;
+        valueProp: string;
+        conversion: string;
+        friction: string;
+      };
+      variant: {
+        badge: string;
+        title: string;
+        headline: string;
+        valueProp: string;
+        conversion: string;
+        frictionResolved: string;
+      };
+    };
+    copySection: {
+      title: string;
+      subtitle: string;
+      copies: Array<{
+        angle: string;
+        tag: string;
+        hook: string;
+        body: string;
+        cta: string;
+      }>;
+      copyButtonText: string;
+      copiedToast: string;
+    };
+    simulator: {
+      title: string;
+      subtitle: string;
+      sliderLabel: string;
+      controlResult: string;
+      variantResult: string;
+      liftLabel: string;
+      summaryNote: string;
+    };
+    checklist: {
+      title: string;
+      subtitle: string;
+      items: Array<{
+        id: string;
+        phase: string;
+        title: string;
+        desc: string;
+      }>;
+    };
+    decisionRules: {
+      title: string;
+      rules: Array<{
+        status: 'success' | 'warning' | 'pivot';
+        title: string;
+        threshold: string;
+        action: string;
+      }>;
+    };
+    footer: {
+      backBtn: string;
+      copyPlanBtn: string;
+      copiedToast: string;
+      applyHypothesisBtn: string;
+    };
   };
   screenBuildTransition?: {
     badge: string;
@@ -413,7 +515,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
         },
       },
       alpacaGuidance: {
-        coachName: 'Alpi · Tu Coach Alpaca',
+        coachName: 'Alfi · Tu Coach Alpaca',
         quote: 'No te preocupes. No necesitas saber la respuesta a todo. Lo resolveremos juntos paso a paso.',
         tip: 'La mayoría de los proyectos exitosos comenzaron con una meta simple. El secreto es dividirla en acciones diarias guiadas por IA.',
         whyImportantTitle: '¿Por qué empezamos por aquí?',
@@ -428,7 +530,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Ahora entendamos dónde estás.',
       supportingText: 'No necesitas tener todas las respuestas. Te haré unas pocas preguntas para encontrar el mejor punto de partida.',
       alpacaMessage: 'Vamos paso a paso. No necesitas saber Marketing para empezar.',
-      coachName: 'Alpi · Tu Coach de Crecimiento',
+      coachName: 'Alfi · Tu Coach de Crecimiento',
       q1: {
         title: '¿A quién quieres llegar?',
         helper: 'Describe a la persona, grupo o tipo de cliente que quieres atraer.',
@@ -500,7 +602,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
     screenTransitionLearn: {
       badge: 'Paso 03 · Transición a Aprender',
       title: '¡Diagnóstico listo! Tu punto de partida está definido',
-      subtitle: 'Tu coach Alpi ha estructurado tus respuestas para preparar tus lecciones personalizadas con IA.',
+      subtitle: 'Tu coach Alfi ha estructurado tus respuestas para preparar tus lecciones personalizadas con IA.',
       previewCardTitle: 'Estructura conceptual lista para tu IA (Context Schema)',
       nextTitle: 'Qué desbloquearás en el Paso 03: Aprender',
       nextSteps: [
@@ -516,7 +618,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Aprende lo que necesitas para avanzar.',
       supportingText: 'No necesitas convertirte en experto en Marketing. Vamos a aprender justo lo necesario para tomar tu próxima decisión.',
       alpacaMessage: 'Te prometo que hoy no vamos a leer un manual de 400 páginas.',
-      coachName: 'Alpi · Tu Coach de Crecimiento',
+      coachName: 'Alfi · Tu Coach de Crecimiento',
       startingPoint: {
         title: 'Tu punto de partida',
         projectType: 'Tipo de proyecto',
@@ -578,7 +680,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Ahora vamos a construirlo juntos.',
       supportingText: 'Tu idea no necesita estar perfecta. La vamos a convertir en una primera versión que puedas probar.',
       alpacaMessage: 'Yo te ayudo a ordenar las ideas. La decisión final sigue siendo tuya.',
-      coachName: 'Alpi · Tu Coach de Crecimiento',
+      coachName: 'Alfi · Tu Coach de Crecimiento',
       mainTitle: 'Construyamos tu propuesta de valor',
       step1: {
         title: '¿Qué problema quieres resolver?',
@@ -625,7 +727,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Convirtamos la idea en una hipótesis.',
       supportingText: 'No vamos a adivinar. Vamos a probar algo concreto y medir qué sucede.',
       alpacaMessage: '¡Ahora sí! Tenemos algo que aprender del mundo real.',
-      coachName: 'Alpi · Tu Coach de Crecimiento',
+      coachName: 'Alfi · Tu Coach de Crecimiento',
       cardTitle: 'Ficha del Experimento',
       fields: {
         objective: {
@@ -694,7 +796,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Llévalo al mundo real.',
       supportingText: 'Ya tienes la estrategia. Ahora conviértela en una pieza que puedas publicar, compartir o probar.',
       alpacaMessage: 'Menos perfección. Más pruebas.',
-      coachName: 'Alpi · Tu Coach de Crecimiento',
+      coachName: 'Alfi · Tu Coach de Crecimiento',
       flowTitle: 'Flujo de materialización',
       flowSteps: ['OBJETIVO', 'MENSAJE', 'FORMATO', 'CONTENIDO', 'PUBLICACIÓN'],
       assetPreview: {
@@ -733,7 +835,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: '¿Qué aprendimos?',
       supportingText: 'El resultado no es solo un número. Es información para decidir qué hacer después.',
       alpacaMessage: 'Eso es crecimiento: probar, aprender y volver a intentar.',
-      coachName: 'Alpi · Tu Coach de Crecimiento',
+      coachName: 'Alfi · Tu Coach de Crecimiento',
       form: {
         title: 'Resultados del experimento',
         realDataNote: 'Incluye datos reales. No inventes métricas.',
@@ -776,6 +878,8 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       nextExperimentCard: {
         title: 'Tu próxima hipótesis',
         text: 'Si hacemos más específica la propuesta de valor, esperamos aumentar la tasa de registro.',
+        buttonText: 'Configurar este nuevo experimento',
+        buttonHint: 'Explora la estrategia completa, copys con IA y simulador de este test.',
       },
       loopVisual: {
         title: 'El ciclo continuo de Crecimiento',
@@ -789,6 +893,156 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       primaryCta: 'Empezar otro experimento',
       secondaryCta: 'Guardar aprendizaje',
       savedToast: '¡Aprendizaje guardado con éxito!',
+    },
+    screenNextHypothesis: {
+      backToImprove: 'Volver a 07 Medir y Mejorar',
+      badge: 'Paso 07 · Segunda Iteración',
+      iterationLabel: 'Ciclo de Crecimiento #02',
+      statusBadge: 'Hipótesis lista para ejecutar',
+      title: 'Segunda Iteración: Propuesta de Valor Hiper-Específica',
+      subtitle: 'Con base en tus datos del ciclo anterior (48 clics vs 7 registros), Alfie ha diseñado este experimento para duplicar la tasa de conversión eliminando la ambigüedad en tu mensaje principal.',
+      hypothesisCard: {
+        label: 'Hipótesis Principal de Crecimiento',
+        quote: 'Si hacemos más específica la propuesta de valor, esperamos aumentar la tasa de registro.',
+        tags: {
+          channel: 'Canal',
+          channelVal: 'LinkedIn / Web',
+          kpi: 'KPI Principal',
+          kpiVal: 'Tasa de Registro (CR%)',
+          baseline: 'Línea Base (V1)',
+          baselineVal: '14.5% (7 / 48)',
+          target: 'Meta Proyectada',
+          targetVal: '28.0% (≥20 / 100)',
+          sampleSize: 'Muestra Sugerida',
+          sampleSizeVal: '100 clics',
+          duration: 'Horizonte',
+          durationVal: '7 días hábiles',
+        },
+      },
+      coachSection: {
+        coachName: 'Alfie · Tu Coach de Crecimiento',
+        title: 'Análisis Forense de Conversión',
+        diagnostic: 'El CTR del 10% demostró que tu audiencia siente curiosidad genuina. Sin embargo, el 85.5% de fuga al momento del registro indica que tu promesa era demasiado amplia o abstracta. Al no ver un entregable exacto en 3 segundos, postergaron la decisión.',
+        keyInsight: 'Heurística de Conversión de Alfie',
+        quote: 'La claridad siempre supera a la persuasión. Cuando reemplazas "mejora tus ventas" por "consigue tus primeros 100 clientes sin anuncios", el cerebro del usuario no tiene que calcular el valor: lo visualiza de inmediato.',
+      },
+      comparisonMatrix: {
+        title: 'Matriz Comparativa A/B (Control vs Variante)',
+        subtitle: 'Revisa lado a lado cómo la especificidad transforma la percepción de valor y destruye las objeciones.',
+        control: {
+          badge: 'Control (V1 Anterior)',
+          title: 'Propuesta Genérica / Abstracta',
+          headline: 'Impulsa tu negocio y alcanza mejores resultados hoy mismo con nuestras herramientas.',
+          valueProp: 'Promesa amplia y sin plazos ni entregables tangibles. El usuario se pregunta "¿Qué gano exactamente hoy?".',
+          conversion: '14.5% de registro (7 de 48)',
+          friction: 'Alta incertidumbre cognitiva. Exige fe en lugar de certidumbre.',
+        },
+        variant: {
+          badge: 'Variante (V2 - Nueva Hipótesis)',
+          title: 'Propuesta Calibrada con Hiper-Especificidad',
+          headline: 'Plantillas listas y un sistema de 4 pasos para conseguir tus primeros 100 clientes sin gastar en anuncios.',
+          valueProp: 'Resultado cuantificable (100 clientes), entregable tangible (plantillas listas) y eliminación de la mayor objeción (sin gastar en anuncios).',
+          conversion: '28.0% proyectado (+93% mejora)',
+          frictionResolved: 'Claridad instantánea. Reduce el tiempo de comprensión de 15s a menos de 3s.',
+        },
+      },
+      copySection: {
+        title: '3 Copys Validados con IA Listos para Usar',
+        subtitle: 'Selecciona el ángulo de comunicación que mejor resuene con tu audiencia y copia el texto en 1 clic.',
+        copies: [
+          {
+            angle: 'Ángulo 1: Numérico & Tangible',
+            tag: 'Alto Rendimiento B2B',
+            hook: 'Dejar de adivinar en marketing: el sistema exacto para tus primeros 100 clientes.',
+            body: 'El 80% de los proyectos no fallan por falta de talento, sino por propuestas de valor vagas que nadie entiende en 5 segundos.\n\nDiseñamos un kit con plantillas probadas y un método paso a paso de 4 fases para captar clientes calificados sin depender de publicidad paga.\n\nSin jerga técnica. Solo procesos directos y medibles.',
+            cta: 'Descargar el Kit de 4 Pasos Gratis',
+          },
+          {
+            angle: 'Ángulo 2: Eliminación de Fricción',
+            tag: 'Baja Resistencia',
+            hook: '¿Sin presupuesto para anuncios? Cómo conseguir 100 clientes con contenido estratégico.',
+            body: 'No necesitas invertir miles de dólares en campañas para validar tu negocio.\n\nCon una propuesta de valor precisa y mensajes dirigidos al dolor exacto de tu cliente, puedes cerrar tus primeros 100 registros en menos de 30 días.\n\nAccede a nuestra guía paso a paso y empieza hoy.',
+            cta: 'Obtener Guía Práctica sin Costo',
+          },
+          {
+            angle: 'Ángulo 3: Transformación Rápida',
+            tag: 'Enfoque Práctico',
+            hook: 'Transforma tu propuesta en 15 minutos y duplica tus conversiones esta semana.',
+            body: 'Revisa tu titular actual: si dice algo como "ayudamos a crecer", estás perdiendo clientes valiosos.\n\nAprende a estructurar promesas concretas que respondan: ¿Para quién es? ¿Qué problema resuelve? ¿Qué obtengo ya mismo?\n\nPlantillas accionables diseñadas con IA para emprendedores.',
+            cta: 'Ver Plantillas de Conversión Directa',
+          },
+        ],
+        copyButtonText: 'Copiar copy completo al portapapeles',
+        copiedToast: '¡Plan completo del experimento copiado al portapapeles!',
+      },
+      simulator: {
+        title: 'Simulador Predictivo de Conversión',
+        subtitle: 'Mueve el control para estimar el impacto en registros según los visitantes que atraigas en este nuevo ciclo.',
+        sliderLabel: 'Visitantes / Clics estimados en la Variante B:',
+        controlResult: 'Con Propuesta V1 Original',
+        variantResult: 'Con Nueva Hipótesis V2',
+        liftLabel: 'Ganancia Neta Extra',
+        summaryNote: '* Proyección calculada con la tasa base de 14.5% vs la meta de 28.0% obtenida en pruebas de hiper-especificidad.',
+      },
+      checklist: {
+        title: 'Checklist de Implementación Operativa',
+        subtitle: 'Sigue estos 4 pasos rigurosos para asegurar que el experimento mida exactamente la hipótesis sin ruido.',
+        items: [
+          {
+            id: 'step_1',
+            phase: 'Fase 01 · Mensaje',
+            title: 'Actualizar el titular y subtítulo con la propuesta específica',
+            desc: 'Asegúrate de incluir el beneficio cuantitativo (ej. 100 clientes) y el entregable concreto en el primer pliegue de tu página o post.',
+          },
+          {
+            id: 'step_2',
+            phase: 'Fase 02 · CTA',
+            title: 'Alinear la llamada a la acción con el nuevo beneficio',
+            desc: 'Cambiar llamadas genéricas como "Registrarme" o "Saber más" por acciones de valor inmediato como "Descargar Kit de 4 Pasos".',
+          },
+          {
+            id: 'step_3',
+            phase: 'Fase 03 · Medición',
+            title: 'Etiquetar enlaces con parámetros UTM únicos',
+            desc: 'Usa "?utm_source=linkedin&utm_campaign=hipotesis_especificidad_v2" para aislar los nuevos resultados en tu analítica.',
+          },
+          {
+            id: 'step_4',
+            phase: 'Fase 04 · Cohorte',
+            title: 'Alcanzar una muestra mínima de 100 clics antes de evaluar',
+            desc: 'No detengas el experimento con menos de 50 clics para garantizar que el resultado no sea mero azar estadístico.',
+          },
+        ],
+      },
+      decisionRules: {
+        title: 'Criterios de Decisión del Coach Alfie (Semáforo de Crecimiento)',
+        rules: [
+          {
+            status: 'success',
+            threshold: 'Conversión ≥ 22% (Éxito)',
+            title: 'Hipótesis Validada · Escalar Canal',
+            action: 'La especificidad funcionó. Consolida este mensaje en toda tu presencia digital y prueba el mismo ángulo en formatos de video corto o email marketing.',
+          },
+          {
+            status: 'warning',
+            threshold: 'Conversión 15% - 21% (Inconclusa)',
+            title: 'Interés Alto · Fricción Secundaria',
+            action: 'El mensaje atrajo más interés pero hubo abandono en el formulario. Reduce los campos solicitados a solo el correo electrónico.',
+          },
+          {
+            status: 'pivot',
+            threshold: 'Conversión < 15% (Refutada)',
+            title: 'Hipótesis Refutada · Pivotar Oferta',
+            action: 'La especificidad no resolvió la objeción principal. Vuelve al Paso 02 para reevaluar si el problema atacado es prioritario para esta audiencia.',
+          },
+        ],
+      },
+      footer: {
+        backBtn: 'Volver a Medir y Mejorar',
+        copyPlanBtn: 'Copiar Plan Completo',
+        copiedToast: '¡Plan completo del experimento copiado al portapapeles!',
+        applyHypothesisBtn: 'Aplicar esta Hipótesis al Ciclo',
+      },
     },
     screenBuildTransition: {
       badge: 'Paso 04 · Construir',
@@ -900,7 +1154,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
         },
       },
       alpacaGuidance: {
-        coachName: 'Alpi · Seu Coach Alpaca',
+        coachName: 'Alfi · Seu Coach Alpaca',
         quote: 'Não se preocupe. Você não precisa saber a resposta para tudo. Vamos descobrir isso juntos passo a passo.',
         tip: 'A maioria dos negócios prósperos começou com um objetivo simples. O segredo é quebrá-lo em tarefas práticas guiadas por IA.',
         whyImportantTitle: 'Por que começamos por aqui?',
@@ -915,7 +1169,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Agora vamos entender onde você está.',
       supportingText: 'Você não precisa ter todas as respostas. Vou fazer algumas perguntas para encontrar o melhor ponto de partida.',
       alpacaMessage: 'Vamos passo a passo. Você não precisa dominar Marketing para começar.',
-      coachName: 'Alpi · Seu Coach de Crescimento',
+      coachName: 'Alfi · Seu Coach de Crescimento',
       q1: {
         title: 'Quem você quer alcançar?',
         helper: 'Descreva a pessoa, grupo ou tipo de cliente que você quer atrair.',
@@ -987,7 +1241,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
     screenTransitionLearn: {
       badge: 'Passo 03 · Transição para Aprender',
       title: 'Diagnóstico pronto! Seu ponto de partida foi definido',
-      subtitle: 'Seu coach Alpi estruturou suas respostas para preparar suas lições personalizadas com IA.',
+      subtitle: 'Seu coach Alfi estruturou suas respostas para preparar suas lições personalizadas com IA.',
       previewCardTitle: 'Estrutura conceitual pronta para sua IA (Context Schema)',
       nextTitle: 'O que você desbloqueará no Passo 03: Aprender',
       nextSteps: [
@@ -1003,7 +1257,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Aprenda o que você precisa para avançar.',
       supportingText: 'Você não precisa se tornar especialista em Marketing. Vamos aprender exatamente o que você precisa para tomar sua próxima decisão.',
       alpacaMessage: 'Prometo que hoje não vamos ler um manual de 400 páginas.',
-      coachName: 'Alpi · Seu Coach de Crescimento',
+      coachName: 'Alfi · Seu Coach de Crescimento',
       startingPoint: {
         title: 'Seu ponto de partida',
         projectType: 'Tipo de projeto',
@@ -1065,7 +1319,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Agora vamos construir isso juntos.',
       supportingText: 'Sua ideia não precisa estar perfeita. Vamos transformá-la em uma primeira versão que você possa testar.',
       alpacaMessage: 'Eu ajudo você a organizar as ideias. A decisão final continua sendo sua.',
-      coachName: 'Alpi · Seu Coach de Crescimento',
+      coachName: 'Alfi · Seu Coach de Crescimento',
       mainTitle: 'Vamos construir sua proposta de valor',
       step1: {
         title: 'Que problema você quer resolver?',
@@ -1112,7 +1366,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Vamos transformar a ideia em uma hipótese.',
       supportingText: 'Não vamos adivinhar. Vamos testar algo concreto e medir o que acontece.',
       alpacaMessage: 'Agora sim! Temos algo para aprender com o mundo real.',
-      coachName: 'Alpi · Seu Coach de Crescimento',
+      coachName: 'Alfi · Seu Coach de Crescimento',
       cardTitle: 'Ficha do Experimento',
       fields: {
         objective: {
@@ -1181,7 +1435,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'Leve isso para o mundo real.',
       supportingText: 'Você já tem a estratégia. Agora transforme-a em algo que possa publicar, compartilhar ou testar.',
       alpacaMessage: 'Menos perfeição. Mais testes.',
-      coachName: 'Alpi · Seu Coach de Crescimento',
+      coachName: 'Alfi · Seu Coach de Crescimento',
       flowTitle: 'Fluxo de materialização',
       flowSteps: ['OBJETIVO', 'MENSAGEM', 'FORMATO', 'CONTEÚDO', 'PUBLICAÇÃO'],
       assetPreview: {
@@ -1220,7 +1474,7 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       headline: 'O que aprendemos?',
       supportingText: 'O resultado não é apenas um número. É informação para decidir o que fazer depois.',
       alpacaMessage: 'Isso é crescimento: testar, aprender e tentar de novo.',
-      coachName: 'Alpi · Seu Coach de Crescimento',
+      coachName: 'Alfi · Seu Coach de Crescimento',
       form: {
         title: 'Resultados do experimento',
         realDataNote: 'Inclua dados reais. Não invente métricas.',
@@ -1263,6 +1517,8 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       nextExperimentCard: {
         title: 'Sua próxima hipótese',
         text: 'Se tornarmos a proposta de valor mais específica, esperamos aumentar a taxa de conversão.',
+        buttonText: 'Configurar este novo experimento',
+        buttonHint: 'Explore a estratégia completa, copys com IA e simulador deste teste.',
       },
       loopVisual: {
         title: 'O ciclo contínuo de Crescimento',
@@ -1276,6 +1532,156 @@ export const translations: Record<'es' | 'pt', TranslationSchema> = {
       primaryCta: 'Começar outro experimento',
       secondaryCta: 'Salvar aprendizado',
       savedToast: 'Aprendizado salvo com sucesso!',
+    },
+    screenNextHypothesis: {
+      backToImprove: 'Voltar a 07 Medir e Melhorar',
+      badge: 'Passo 07 · Segunda Iteração',
+      iterationLabel: 'Ciclo de Crescimento #02',
+      statusBadge: 'Hipótese pronta para executar',
+      title: 'Segunda Iteração: Proposta de Valor Hiperespecífica',
+      subtitle: 'Com base nos dados do ciclo anterior (48 cliques vs 7 cadastros), Alfi projetou este experimento para duplicar sua taxa de conversão eliminando ambiguidades na mensagem.',
+      hypothesisCard: {
+        label: 'Hipótese Principal de Crescimento',
+        quote: 'Se tornarmos a proposta de valor mais específica, esperamos aumentar a taxa de conversão.',
+        tags: {
+          channel: 'Canal',
+          channelVal: 'LinkedIn / Web',
+          kpi: 'KPI Principal',
+          kpiVal: 'Taxa de Conversão (CR%)',
+          baseline: 'Linha de Base (V1)',
+          baselineVal: '14.5% (7 / 48)',
+          target: 'Meta Projetada',
+          targetVal: '28.0% (≥20 / 100)',
+          sampleSize: 'Amostra Sugerida',
+          sampleSizeVal: '100 cliques',
+          duration: 'Horizonte',
+          durationVal: '7 dias úteis',
+        },
+      },
+      coachSection: {
+        coachName: 'Alfi · Seu Coach de Crescimento',
+        title: 'Diagnóstico Forense de Conversão',
+        diagnostic: 'A taxa de cliques (CTR) de 10% provou que seu público tem interesse real. No entanto, a queda de 85.5% no momento do cadastro indica que sua proposta era vaga ou abstrata. Sem ver um benefício exato em 3 segundos, adiaram o cadastro.',
+        keyInsight: 'Heurística de Conversão do Alfi',
+        quote: 'Clareza sempre supera persuasão. Quando você troca "melhore suas vendas" por "conquiste seus primeiros 100 clientes sem anúncios", o cérebro do usuário não precisa calcular o valor: ele visualiza de imediato.',
+      },
+      comparisonMatrix: {
+        title: 'Matriz Comparativa A/B (Controle vs Variante)',
+        subtitle: 'Compare lado a lado como a especificidade transforma a percepção de valor e elimina objeções.',
+        control: {
+          badge: 'Controle (V1 Anterior)',
+          title: 'Proposta Genérica / Abstrata',
+          headline: 'Impulsione seu negócio e alcance melhores resultados hoje com nossas ferramentas.',
+          valueProp: 'Promessa ampla, sem prazos nem entregáveis tangíveis. O usuário se pergunta "O que eu ganho exatamente hoje?".',
+          conversion: '14.5% de conversão (7 de 48)',
+          friction: 'Alta incerteza cognitiva. Exige fé em vez de certeza.',
+        },
+        variant: {
+          badge: 'Variante (V2 - Nova Hipótese)',
+          title: 'Proposta Calibrada com Hiperespecificidade',
+          headline: 'Modelos prontos e um sistema de 4 passos para conquistar seus primeiros 100 clientes sem gastar com anúncios.',
+          valueProp: 'Resultado quantificável (100 clientes), entregável tangível (modelos prontos) e eliminação da maior objeção (sem gastar com anúncios).',
+          conversion: '28.0% projetado (+93% melhora)',
+          frictionResolved: 'Clareza instantânea. Reduz o tempo de compreensão de 15s para menos de 3s.',
+        },
+      },
+      copySection: {
+        title: '3 Copys Validados com IA Prontos para Usar',
+        subtitle: 'Selecione o ângulo que melhor conecta com seu público e copie o texto em 1 clique.',
+        copies: [
+          {
+            angle: 'Ângulo 1: Numérico & Tangível',
+            tag: 'Alto Desempenho B2B',
+            hook: 'Chega de adivinhar no marketing: o sistema exato para seus primeiros 100 clientes.',
+            body: '80% dos projetos não falham por falta de talento, mas por propostas de valor vagas que ninguém entende em 5 segundos.\n\nCriamos um kit com modelos validados e um método prático de 4 fases para atrair clientes qualificados sem depender de anúncios pagos.\n\nSem termos complicados. Processo direto e mensurável.',
+            cta: 'Baixar o Kit de 4 Passos Grátis',
+          },
+          {
+            angle: 'Ângulo 2: Redução de Atrito',
+            tag: 'Baixa Resistência',
+            hook: 'Sem verba para anúncios? Como conquistar 100 clientes com conteúdo estratégico.',
+            body: 'Você não precisa investir milhares de reais em campanhas para validar seu negócio.\n\nCom uma proposta de valor precisa e mensagens focadas na dor exata do seu cliente, você fecha seus primeiros 100 cadastros em menos de 30 dias.\n\nAcesse nosso guia prático e comece hoje.',
+            cta: 'Obter Guia Prático sem Custo',
+          },
+          {
+            angle: 'Ângulo 3: Transformação Rápida',
+            tag: 'Foco Prático',
+            hook: 'Ajuste sua proposta em 15 minutos e dobre suas conversões esta semana.',
+            body: 'Olhe seu título atual: se disser algo como "ajudamos a crescer", você está perdendo clientes valiosos.\n\nAprenda a estruturar promessas concretas que respondem: Para quem é? Qual dor resolve? O que ganho agora?\n\nModelos práticos desenhados com IA para empreendedores.',
+            cta: 'Ver Modelos de Conversão Direta',
+          },
+        ],
+        copyButtonText: 'Copiar copy completo',
+        copiedToast: 'Plano completo do experimento copiado para a área de transferência!',
+      },
+      simulator: {
+        title: 'Simulador Preditivo de Conversão',
+        subtitle: 'Mova o controle para estimar o impacto em cadastros de acordo com o tráfego gerado nesta nova etapa.',
+        sliderLabel: 'Visitantes / Cliques estimados na Variante B:',
+        controlResult: 'Com Proposta V1 Original',
+        variantResult: 'Com Nova Hipótese V2',
+        liftLabel: 'Ganho Líquido Extra',
+        summaryNote: '* Projeção calculada com base na taxa de 14.5% vs meta de 28.0% obtida em testes de hiperespecificidade.',
+      },
+      checklist: {
+        title: 'Checklist de Implementação Operacional',
+        subtitle: 'Siga estes 4 passos rigorosos para garantir que o teste meça exatamente a hipótese sem ruído.',
+        items: [
+          {
+            id: 'step_1',
+            phase: 'Fase 01 · Mensagem',
+            title: 'Atualizar o título e subtítulo com a proposta específica',
+            desc: 'Inclua o benefício numérico (ex. 100 clientes) e o entregável tangível na primeira dobra da página ou post.',
+          },
+          {
+            id: 'step_2',
+            phase: 'Fase 02 · CTA',
+            title: 'Alinhar a chamada para ação com o novo benefício',
+            desc: 'Substitua botões vagos como "Cadastrar" por ações de valor imediato como "Baixar Kit de 4 Passos".',
+          },
+          {
+            id: 'step_3',
+            phase: 'Fase 03 · Mensuração',
+            title: 'Configurar links com parâmetros UTM exclusivos',
+            desc: 'Use "?utm_source=linkedin&utm_campaign=hipotese_especificidade_v2" para isolar os novos resultados nas métricas.',
+          },
+          {
+            id: 'step_4',
+            phase: 'Fase 04 · Amostra',
+            title: 'Alcançar no mínimo 100 cliques antes de tirar conclusões',
+            desc: 'Não interrompa o teste com menos de 50 cliques para evitar falsos positivos estatísticos.',
+          },
+        ],
+      },
+      decisionRules: {
+        title: 'Critérios de Decisão do Alfi (Semáforo de Crescimento)',
+        rules: [
+          {
+            status: 'success',
+            threshold: 'Conversão ≥ 22% (Sucesso)',
+            title: 'Hipótese Validada · Escalar Canal',
+            action: 'A especificidade funcionou. Consolide esta mensagem em todos os pontos de contato e expanda para vídeos curtos e e-mail.',
+          },
+          {
+            status: 'warning',
+            threshold: 'Conversão 15% - 21% (Inconclusivo)',
+            title: 'Interesse Alto · Atrito Secundário',
+            action: 'A mensagem atraiu mais atenção mas houve abandono no formulário. Reduza os campos exigidos para apenas o e-mail.',
+          },
+          {
+            status: 'pivot',
+            threshold: 'Conversão < 15% (Refutada)',
+            title: 'Hipótese Refutada · Pivotar Oferta',
+            action: 'A especificidade não removeu a barreira principal. Volte ao Passo 02 para reavaliar se a dor atacada é prioridade para seu público.',
+          },
+        ],
+      },
+      footer: {
+        backBtn: 'Voltar a Medir e Melhorar',
+        copyPlanBtn: 'Copiar Plano Completo',
+        copiedToast: 'Plano completo do experimento copiado para a área de transferência!',
+        applyHypothesisBtn: 'Aplicar esta Hipótese ao Ciclo',
+      },
     },
     screenBuildTransition: {
       badge: 'Passo 04 · Construir',
