@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  ExperimentFormData, 
-  BuildFormData, 
+import {
+  ExperimentFormData,
+  BuildFormData,
   ExecuteChecklist,
-  Language 
+  Language
 } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaAvatar, AlpacaGuide } from './AlpacaGuide';
+import { ImageGenerator } from './ImageGenerator';
 import {
   Rocket,
   ArrowRight,
@@ -85,20 +86,20 @@ export function ScreenExecute({
     setTimeout(() => setCanvaSimulated(false), 4000);
   };
 
-  const handleOpenMakeScenario = () => {
-    // Construct URL with query parameters containing the experiment data
-    const params = new URLSearchParams({
-      message: experimentData.message || '',
-      cta: experimentData.cta || '',
-      channel: experimentData.channel || 'linkedin',
-      objective: experimentData.objective || '',
-      hypothesis: experimentData.hypothesis || '',
-      language,
-    });
+  // const handleOpenMakeScenario = () => {
+  //   // Construct URL with query parameters containing the experiment data
+  //   const params = new URLSearchParams({
+  //     message: experimentData.message || '',
+  //     cta: experimentData.cta || '',
+  //     channel: experimentData.channel || 'linkedin',
+  //     objective: experimentData.objective || '',
+  //     hypothesis: experimentData.hypothesis || '',
+  //     language,
+  //   });
 
-    const url = `${TOOL_LINKS.makeScenario}?${params.toString()}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
+  //   const url = `${TOOL_LINKS.makeScenario}?${params.toString()}`;
+  //   window.open(url, '_blank', 'noopener,noreferrer');
+  // };
 
   const handleOpenImproveForm = () => {
     const params = new URLSearchParams({
@@ -312,6 +313,19 @@ export function ScreenExecute({
         </div>
       </section>
 
+      {/* 4.5 Image Generator with NanoBanana 2 */}
+      <section aria-labelledby="image-generator-heading">
+        <div className="bg-gradient-to-br from-purple-50/70 via-white to-pink-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <ImageGenerator
+            language={language}
+            message={experimentData.message}
+            cta={experimentData.cta}
+            channel={experimentData.channel}
+            onError={onError}
+          />
+        </div>
+      </section>
+
       {/* 5. Pre-Publication Checklist */}
       <section aria-labelledby="checklist-title">
         <div className="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-2xs space-y-4">
@@ -359,7 +373,7 @@ export function ScreenExecute({
       </section>
 
       {/* 5.5 Make Scenario Integration Block */}
-      <section aria-labelledby="make-scenario-heading">
+      {/* <section aria-labelledby="make-scenario-heading">
         <div className="bg-gradient-to-br from-rose-50/70 via-white to-orange-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
@@ -405,10 +419,10 @@ export function ScreenExecute({
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 6. Recopilación de datos: Formulario + Hoja de cálculo */}
-      <section aria-labelledby="data-capture-heading">
+      {/* <section aria-labelledby="data-capture-heading">
         <div className="bg-gradient-to-br from-emerald-50/70 via-white to-sky-50/60 border border-emerald-200/70 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-4">
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center shrink-0">
@@ -471,7 +485,7 @@ export function ScreenExecute({
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 7. Primary CTA & Secondary Action */}
       <div className="pt-4 flex flex-col items-center justify-center space-y-3">

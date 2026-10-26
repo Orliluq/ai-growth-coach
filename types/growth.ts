@@ -1,11 +1,11 @@
 export type Language = 'es' | 'pt';
 
-export type GoalCategoryId = 
-  | 'product' 
-  | 'community' 
-  | 'course' 
-  | 'business' 
-  | 'brand' 
+export type GoalCategoryId =
+  | 'product'
+  | 'community'
+  | 'course'
+  | 'business'
+  | 'brand'
   | 'education';
 
 export type TimelineOption = '7d' | '30d' | '90d';
@@ -15,6 +15,28 @@ export type ExperienceLevel = 'beginner' | 'basics' | 'experienced';
 export type StepNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export type ExerciseOption = 'A' | 'B' | 'C';
+
+// Multichannel content types
+export type ContentChannel = 'linkedin' | 'discord' | 'newsletter' | 'instagram' | 'email';
+
+export interface MultichannelContent {
+  channel: ContentChannel;
+  content: string;
+  tone: string;
+  cta: string;
+  format: string;
+}
+
+// Editorial calendar types
+export interface EditorialCalendarItem {
+  date: string;
+  channel: ContentChannel;
+  topic: string;
+  objective: string;
+  format: string;
+  cta: string;
+  status: 'planned' | 'scheduled' | 'published';
+}
 
 export interface GoalCardItem {
   id: GoalCategoryId;

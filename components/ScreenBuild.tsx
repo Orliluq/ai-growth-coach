@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { BuildFormData, Language } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaAvatar, AlpacaGuide } from './AlpacaGuide';
+import { MultichannelContentGenerator } from './MultichannelContentGenerator';
+import { EditorialCalendar } from './EditorialCalendar';
 import {
   Hammer,
   ArrowRight,
@@ -487,6 +489,28 @@ export function ScreenBuild({
               &ldquo;{valueProposition || computedDraftProp || currentCoachProposal}&rdquo;
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* 4.25 Multichannel Content Generator */}
+      <section aria-labelledby="multichannel-heading">
+        <div className="bg-gradient-to-br from-sky-50/70 via-white to-indigo-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <MultichannelContentGenerator
+            language={language}
+            buildData={{ problem, persona, value, valueProposition }}
+            onError={onError}
+          />
+        </div>
+      </section>
+
+      {/* 4.3 Editorial Calendar */}
+      <section aria-labelledby="calendar-heading">
+        <div className="bg-gradient-to-br from-amber-50/70 via-white to-orange-50/60 border border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs">
+          <EditorialCalendar
+            language={language}
+            existingContent={valueProposition}
+            objective={language === 'pt' ? 'Validar proposta de valor' : 'Validar propuesta de valor'}
+          />
         </div>
       </section>
 

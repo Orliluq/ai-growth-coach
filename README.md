@@ -35,8 +35,8 @@
     <img src="https://img.shields.io/badge/NotebookLM-Knowledge-34A853?style=flat-square&logo=google&logoColor=white" alt="NotebookLM" />
     <img src="https://img.shields.io/badge/Google%20Forms-Input-673AB7?style=flat-square&logo=googleforms&logoColor=white" alt="Google Forms" />
     <img src="https://img.shields.io/badge/Google%20Sheets-Data-34A853?style=flat-square&logo=googlesheets&logoColor=white" alt="Google Sheets" />
-    <img src="https://img.shields.io/badge/Make-Automation-6D4AFF?style=flat-square" alt="Make" />
     <img src="https://img.shields.io/badge/Canva-Execution-00C4CC?style=flat-square&logo=canva&logoColor=white" alt="Canva" />
+    <img src="https://img.shields.io/badge/NanoBanana%202-Images-9333EA?style=flat-square" alt="NanoBanana 2" />
   </p>
 
 </div>
@@ -176,6 +176,12 @@ La persona convierte el aprendizaje en algo concreto:
 * experimento;
 * pieza de comunicación.
 
+**Novedades en esta etapa:**
+
+- **Generación de contenido multicanal**: A partir de una idea semilla, genera versiones adaptadas para LinkedIn, Discord, Newsletter, Instagram y Email, cada una con tono, formato y CTA específicos para su audiencia.
+- **Calendario editorial de 7 días**: Planificación completa con fecha, canal, tema, objetivo, formato y CTA para mantener consistencia en las publicaciones.
+- **Integración con el Gem**: Consulta al AI Growth Coach Gem para refinar propuestas y obtener recomendaciones basadas en la base de conocimiento.
+
 La IA propone.
 
 **La persona decide.**
@@ -212,11 +218,15 @@ La hipótesis sale del entorno de planificación y entra en el mundo real.
 
 Las herramientas de creación y distribución ayudan a convertir la estrategia en una acción concreta.
 
+**Novedades en esta etapa:**
+
+- **Generación de imágenes con NanoBanana 2**: Crea prompts visuales automáticos y genera imágenes para acompañar el contenido de la campaña.
+- **Integración con Canva**: Permite abrir Canva directamente con la imagen generada y los datos del experimento para personalizar la pieza visual.
+- **Vista previa del contenido**: Preview de cómo se verá la pieza de contenido en el canal seleccionado antes de publicar.
+
 Canva puede utilizarse para transformar la idea en una pieza visual ejecutable.
 
 Forms y Sheets pueden utilizarse para recoger respuestas, resultados y evidencias.
-
-Make puede utilizarse para conectar y automatizar pasos repetitivos.
 
 ### 07 — Improve
 
@@ -233,6 +243,12 @@ QUÉ APRENDIMOS
       ↓
 QUÉ PROBAMOS DESPUÉS
 ```
+
+**Novedades en esta etapa:**
+
+- **Captura de datos con Google Forms y Sheets**: Integración directa para cargar datos reales de feedback y métricas, con cálculo automático de CTR, tasa de conversión y métricas clave.
+- **Análisis de resultados**: Interpretación estructurada de qué funcionó, qué no funcionó, evidencia disponible y siguientes acciones.
+- **Propuesta de siguiente experimento**: Generación automática de la siguiente hipótesis basada en los aprendizajes del ciclo anterior.
 
 El proceso vuelve a comenzar. 🔁
 
@@ -339,6 +355,58 @@ a:
 
 ---
 
+## 🆕 Funcionalidades implementadas
+
+### Generación de contenido multicanal (ScreenBuild)
+
+A partir de una idea semilla, el sistema genera versiones diferenciadas para múltiples canales:
+
+- **LinkedIn**: Post educativo y profesional con tono experto
+- **Discord**: Mensaje cercano orientado a la participación
+- **Newsletter**: Explicación breve + invitación directa
+- **Instagram**: Contenido visual con CTA en bio
+- **Email**: Comunicación directa y personalizada
+
+Cada versión mantiene el mensaje central pero adapta el tono, formato y llamada a la acción para su audiencia específica.
+
+### Calendario editorial de 7 días
+
+Planificación completa con:
+- Fecha (día de la semana)
+- Canal seleccionado
+- Tema del contenido
+- Objetivo de la publicación
+- Formato (post, message, email)
+- Call-to-Action específico
+- Estado (Planejado/Agendado/Publicado)
+
+Editables con un clic para ajustar según la estrategia.
+
+### Generación de imágenes con NanoBanana 2
+
+- Creación automática de prompts visuales basados en el mensaje y CTA
+- Generación de imágenes para acompañar campañas
+- Historial de prompts utilizados
+- Integración directa con Canva para personalizar la imagen generada
+
+### Captura de datos real (ScreenImprove)
+
+Integración completa con Google Workspace:
+- **Google Forms**: Captura de feedback estructurado del público
+- **Google Sheets**: Registro de métricas y resultados del experimento
+- Cálculo automático de CTR, tasa de conversión y métricas clave
+- Posibilidad de cargar datos automáticamente o editar manualmente
+- Análisis estructurado: qué funcionó, qué no funcionó, evidencia y siguientes acciones
+
+### Integración mejorada con el Gem
+
+En múltiples etapas (Learn, Build), el usuario puede:
+- Copiar automáticamente el contexto completo al Gem
+- Consultar al AI Growth Coach con datos específicos del proyecto
+- Obtener recomendaciones basadas en la base de conocimiento de NotebookLM
+
+---
+
 ## 🧰 Ecosistema de herramientas
 
 AI Growth Coach no intenta reemplazar todas las herramientas existentes.
@@ -353,7 +421,6 @@ Las utiliza según el momento del proceso.
 | **Google AI Studio** | Construcción y prototipado de la experiencia             |
 | **Google Forms**     | Captura estructurada de respuestas y feedback            |
 | **Google Sheets**    | Registro de datos, experimentos y métricas               |
-| **Make**             | Automatización de tareas y conexiones entre herramientas |
 | **Canva**            | Conversión de ideas y estrategias en piezas visuales     |
 
 ### Separación de responsabilidades
@@ -622,9 +689,6 @@ Promete algo más útil:
              │                │                │
              └────────────────┼────────────────┘
                               ▼
-                           Make
-                              │
-                              ▼
                        RESULTADOS + FEEDBACK
                               │
                               └──────→ NEXT EXPERIMENT
@@ -651,6 +715,40 @@ La experiencia diferencia entre:
 La IA recomienda.
 
 La persona decide.
+
+---
+
+## ⚙️ Configuración
+
+Para usar todas las funcionalidades del proyecto, configura las siguientes variables de entorno en `.env.local`:
+
+```bash
+# API de Gemini para llamadas a la IA
+GEMINI_API_KEY="tu_gemini_api_key"
+
+# URL de la aplicación
+APP_URL="https://tu-app-url.com"
+
+# Gem personalizado de AI Growth Coach
+NEXT_PUBLIC_GROWTH_COACH_GEM_URL="https://gemini.google.com/gem/tu_gem_id"
+
+# NotebookLM para base de conocimiento
+NEXT_PUBLIC_NOTEBOOKLM_URL="https://notebook.google.com/notebook/tu_notebook_id"
+
+# Google Forms para captura de feedback
+NEXT_PUBLIC_IMPROVE_FORM_URL="https://docs.google.com/forms/d/tu_form_id"
+
+# Google Sheets para registro de métricas
+NEXT_PUBLIC_RESULTS_SHEET_URL="https://docs.google.com/spreadsheets/d/tu_sheet_id"
+
+# Canva para diseño visual
+NEXT_PUBLIC_CANVA_URL="https://canva.link/tu_template_id"
+
+# NanoBanana 2 para generación de imágenes
+NEXT_PUBLIC_NANOBANANA_URL="https://nanobanana.app/"
+```
+
+Ver el archivo `.env.example` para referencia.
 
 ---
 
@@ -694,9 +792,13 @@ Es demostrar una idea sencilla:
 * [x] Diseñar el AI Growth Coach Gem
 * [x] Crear la base de conocimiento
 * [x] Integrar el enfoque NotebookLM + Gemini
-* [ ] Conectar captura y resultados reales
-* [ ] Conectar automatizaciones de Make
-* [ ] Incorporar ejecución visual con Canva
+* [x] Implementar generación de contenido multicanal (LinkedIn, Discord, Newsletter, Instagram, Email)
+* [x] Crear calendario editorial de 7 días
+* [x] Integrar generación de imágenes con NanoBanana 2
+* [x] Conectar captura y resultados reales con Google Forms y Sheets
+* [x] Incorporar ejecución visual con Canva
+* [ ] Integrar API real de NanoBanana para generación de imágenes
+* [ ] Personalizar voz de marca en prompts del sistema
 * [ ] Validar el flujo con usuarios
 * [ ] Publicar demo del challenge
 

@@ -4,19 +4,20 @@ import React, { useState } from 'react';
 import { ImproveFormData, Language } from '@/types/growth';
 import { TranslationSchema } from '@/lib/i18n';
 import { AlpacaAvatar, AlpacaGuide } from './AlpacaGuide';
-import { 
-  TrendingUp, 
-  Sparkles, 
-  RotateCcw, 
-  Bookmark, 
-  // CheckCircle2, 
-  // AlertCircle, 
-  BarChart3, 
-  ArrowRight, 
-  ArrowLeft, 
-  Check, 
-  RefreshCw, 
-  // Compass, 
+import { DataCapture } from './DataCapture';
+import {
+  TrendingUp,
+  Sparkles,
+  RotateCcw,
+  Bookmark,
+  // CheckCircle2,
+  // AlertCircle,
+  BarChart3,
+  ArrowRight,
+  ArrowLeft,
+  Check,
+  RefreshCw,
+  // Compass,
   // Award,
   Zap
 } from 'lucide-react';
@@ -110,87 +111,26 @@ export function ScreenImprove({
             </span>
           </div>
 
-          {/* Metric input cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-            <div className="p-3.5 rounded-xl bg-stone-50/70 border border-stone-200/80 space-y-1.5">
-              <label htmlFor="imp-impressions-input" className="text-[11px] font-mono-data font-semibold text-stone-600 block truncate">
-                {t.form.impressions}
-              </label>
-              <input
-                id="imp-impressions-input"
-                type="number"
-                value={impressions}
-                onChange={(e) => setImpressions(e.target.value)}
-                className="w-full p-2 rounded-lg border border-stone-200 bg-white font-mono-data font-bold text-stone-900 text-sm focus:outline-none focus:border-stone-400"
-              />
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-stone-50/70 border border-stone-200/80 space-y-1.5">
-              <label htmlFor="imp-clicks-input" className="text-[11px] font-mono-data font-semibold text-stone-600 block truncate">
-                {t.form.clicks}
-              </label>
-              <input
-                id="imp-clicks-input"
-                type="number"
-                value={clicks}
-                onChange={(e) => setClicks(e.target.value)}
-                className="w-full p-2 rounded-lg border border-stone-200 bg-white font-mono-data font-bold text-stone-900 text-sm focus:outline-none focus:border-stone-400"
-              />
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-stone-50/70 border border-stone-200/80 space-y-1.5">
-              <label htmlFor="imp-signups-input" className="text-[11px] font-mono-data font-semibold text-stone-600 block truncate">
-                {t.form.signups}
-              </label>
-              <input
-                id="imp-signups-input"
-                type="number"
-                value={signups}
-                onChange={(e) => setSignups(e.target.value)}
-                className="w-full p-2 rounded-lg border border-stone-200 bg-white font-mono-data font-bold text-stone-900 text-sm focus:outline-none focus:border-stone-400"
-              />
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-stone-50/70 border border-stone-200/80 space-y-1.5">
-              <label htmlFor="imp-engagement-input" className="text-[11px] font-mono-data font-semibold text-stone-600 block truncate">
-                {t.form.engagement}
-              </label>
-              <input
-                id="imp-engagement-input"
-                type="number"
-                value={engagement}
-                onChange={(e) => setEngagement(e.target.value)}
-                className="w-full p-2 rounded-lg border border-stone-200 bg-white font-mono-data font-bold text-stone-900 text-sm focus:outline-none focus:border-stone-400"
-              />
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-stone-50/70 border border-stone-200/80 space-y-1.5">
-              <label htmlFor="imp-conversions-input" className="text-[11px] font-mono-data font-semibold text-stone-600 block truncate">
-                {t.form.conversions}
-              </label>
-              <input
-                id="imp-conversions-input"
-                type="number"
-                value={conversions}
-                onChange={(e) => setConversions(e.target.value)}
-                className="w-full p-2 rounded-lg border border-stone-200 bg-white font-mono-data font-bold text-stone-900 text-sm focus:outline-none focus:border-stone-400"
-              />
-            </div>
-          </div>
-
-          {/* Qualitative notes */}
-          <div className="space-y-1.5">
-            <label htmlFor="imp-notes-input" className="text-xs font-semibold text-stone-700 block">
-              {t.form.notes}
-            </label>
-            <textarea
-              id="imp-notes-input"
-              rows={2}
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              className="w-full p-3 rounded-xl border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-stone-400"
-            />
-          </div>
+          {/* Data Capture Component - Replaces manual input */}
+          <DataCapture
+            language={language}
+            formData={{ impressions, clicks, signups, engagement, conversions, notes }}
+            onDataChange={(data) => {
+              setImpressions(data.impressions);
+              setClicks(data.clicks);
+              setSignups(data.signups);
+              setEngagement(data.engagement);
+              setConversions(data.conversions);
+              setNotes(data.notes);
+            }}
+            experimentData={{
+              message: '',
+              cta: '',
+              channel: '',
+              objective: '',
+              hypothesis: '',
+            }}
+          />
 
           <div className="pt-1 flex items-center justify-center">
             <button

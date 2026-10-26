@@ -15,13 +15,13 @@ export const TOOL_LINKS = {
     process.env.NEXT_PUBLIC_RESULTS_SHEET_URL ??
     'NEXT_PUBLIC_RESULTS_SHEET_URL',
 
-  makeScenario:
-    process.env.NEXT_PUBLIC_MAKE_SCENARIO_URL ??
-    "NEXT_PUBLIC_MAKE_SCENARIO_URL",
-
   canva:
     process.env.NEXT_PUBLIC_CANVA_URL ??
     "NEXT_PUBLIC_CANVA_URL",
+
+  nanoBanana:
+    process.env.NEXT_PUBLIC_NANOBANANA_URL ??
+    "NEXT_PUBLIC_NANOBANANA_URL",
 
   practicalGuide: "/guia-practica",
 } as const;
